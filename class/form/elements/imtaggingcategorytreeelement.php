@@ -24,7 +24,7 @@ class ImtaggingCategoryTreeElement extends XoopsFormSelect {
 
         $categories = $category_handler->getObjects($criteria);
 
-        include_once(XOOPS_ROOT_PATH . "/class/tree.php");
+        include_once(ICMS_ROOT_PATH . "/class/tree.php");
         $mytree = new XoopsObjectTree($categories, "category_id", "category_pid");
         $this->XoopsFormSelect( $object->vars[$key]['form_caption'], $key, $object->getVar($key, 'e') );
 
