@@ -56,6 +56,7 @@ $modversion['adminmenu'] = "admin/menu.php";
 
 /** Database information */
 $modversion['object_items'][1] = 'category';
+$modversion['object_items'][] = 'category_link';
 $modversion['object_items'][] = 'tag';
 $modversion["tables"] = icms_getTablesArray($modversion['dirname'], $modversion['object_items']);
 
@@ -107,6 +108,10 @@ $modversion['templates'][]= array(
 $modversion['templates'][]= array(
   'file' => 'imtagging_admin_category.html',
   'description' => 'Category Index');
+
+$modversion['templates'][]= array(
+  'file' => 'imtagging_admin_category_link.html',
+  'description' => 'Category Link Index');
 
 $modversion['templates'][] = array(
   'file' => 'imtagging_index.html',

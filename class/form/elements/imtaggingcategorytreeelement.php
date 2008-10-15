@@ -11,21 +11,25 @@
 
 if (!defined("ICMS_ROOT_PATH")) die("ICMS root path not defined");
 
-class ImtaggingParentcategoryElement extends XoopsFormSelect {
-    function ImtaggingParentcategoryElement($object, $key) {
+class ImtaggingCategoryTreeElement extends XoopsFormSelect {
+    function ImtaggingCategoryTreeElement($object, $key) {
+        $itemHandler = isset($object->controls[$key]['itemHandler']) ? $object->controls[$key]['itemHandler'] : 'category';
+        $module = isset($object->controls[$key]['module']) ? $object->controls[$key]['module'] : $object->handler->_moduleName;
+		$category_handler = xoops_getmodulehandler('category', $object->handler->_moduleName);
 
+		$category_title_field = $category_handler->identifierName;
     	$addNoParent = isset($object->controls[$key]['addNoParent']) ? $object->controls[$key]['addNoParent'] : true;
     	$criteria = new CriteriaCompo();
-        $criteria->setSort("weight, name");
-        $category_handler = xoops_getmodulehandler('category', $object->handler->_moduleName);
-        $categories = $category_handler->getObjectsD($criteria);
+        $criteria->setSort("weight, " . $category_title_field);
+
+        $categories = $category_handler->getObjects($criteria);
 
         include_once(XOOPS_ROOT_PATH . "/class/tree.php");
-        $mytree = new XoopsObjectTree($categories, "categoryid", "parentid");
+        $mytree = new XoopsObjectTree($categories, "category_id", "category_pid");
         $this->XoopsFormSelect( $object->vars[$key]['form_caption'], $key, $object->getVar($key, 'e') );
 
         $ret = array();
-        $options = $this->getOptionArray($mytree, "name", 0, "", $ret);
+        $options = $this->getOptionArray($mytree, $category_title_field, 0, "", $ret);
         if ($addNoParent) {
         	$newOptions = array('0'=>'----');
         	foreach ($options as $k=>$v) {
