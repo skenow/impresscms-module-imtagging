@@ -59,14 +59,15 @@ class ImtaggingCategory_link extends IcmsPersistableObject {
     	$ret = $this->getVar('category_link_cid', 'e');
 		$obj = $icms_persistable_registry->getSingleObject('category', $ret, 'imtagging');
 
-    	if (!$obj->isNew()) {
+    	if ($obj && !$obj->isNew()) {
     		if (defined('XOOPS_CPFUNC_LOADED')) {
     			$ret = $obj->getAdminViewItemLink();
     		} else {
     			$ret = $obj->getItemLink();
     		}
+    	} else {
+    		return '';
     	}
-    	return $ret;
     }
 
 	function getCategory_linkModule() {

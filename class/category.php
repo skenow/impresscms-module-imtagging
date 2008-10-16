@@ -46,10 +46,26 @@ class ImtaggingCategory extends IcmsPersistableSeoObject {
      * @return mixed value of the field that is requested
      */
     function getVar($key, $format = 's') {
-        if ($format == 's' && in_array($key, array())) {
+        if ($format == 's' && in_array($key, array('category_pid'))) {
             return call_user_func(array($this,$key));
         }
         return parent::getVar($key, $format);
+    }
+
+    function category_pid() {
+		$icms_persistable_registry = IcmsPersistableRegistry::getInstance();
+    	$ret = $this->getVar('category_pid', 'e');
+		$obj = $icms_persistable_registry->getSingleObject('category', $ret, 'imtagging');
+
+    	if ($obj && !$obj->isNew()) {
+    		if (defined('XOOPS_CPFUNC_LOADED')) {
+    			$ret = $obj->getAdminViewItemLink();
+    		} else {
+    			$ret = $obj->getItemLink();
+    		}
+    	} else {
+    		return '';
+    	}
     }
 
 	/**
