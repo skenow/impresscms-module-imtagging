@@ -125,6 +125,11 @@ $modversion['templates'][] = array(
   'file' => 'imtagging_tag.html',
   'description' => 'Tag page');
 
+$modversion['templates'][] = array(
+  'file' => 'imtagging_persistable_singleview.html',
+  'description' => 'Tag page');
+
+
 /** Preferences information */
 
 // Retrieve the group user list, because the automatic group_multi config formtype does not include Anonymous group :-(

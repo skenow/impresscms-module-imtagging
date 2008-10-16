@@ -14,13 +14,13 @@
 /**
  * Edit a Category
  *
- * @param int $categoryid Categoryid to be edited
+ * @param int $category_id Categoryid to be edited
 */
-function editcategory($categoryid = 0)
+function editcategory($category_id = 0)
 {
 	global $imtagging_category_handler, $xoopsModule, $icmsAdminTpl;
 
-	$categoryObj = $imtagging_category_handler->get($categoryid);
+	$categoryObj = $imtagging_category_handler->get($category_id);
 
 	if (!$categoryObj->isNew()){
 
@@ -38,6 +38,7 @@ function editcategory($categoryid = 0)
 }
 
 include_once("admin_header.php");
+include_once ICMS_ROOT_PATH."/kernel/icmspersistabletreetable.php";
 
 $imtagging_category_handler = xoops_getModuleHandler('category');
 /** Use a naming convention that indicates the source of the content of the variable */
@@ -51,7 +52,7 @@ if (isset($_GET['op'])) $clean_op = htmlentities($_GET['op']);
 if (isset($_POST['op'])) $clean_op = htmlentities($_POST['op']);
 
 /** Again, use a naming convention that indicates the source of the content of the variable */
-$clean_categoryid = isset($_GET['categoryid']) ? (int) $_GET['categoryid'] : 0 ;
+$clean_category_id = isset($_GET['category_id']) ? (int) $_GET['category_id'] : 0 ;
 
 /**
  * in_array() is a native PHP function that will determine if the value of the
@@ -66,49 +67,44 @@ if (in_array($clean_op,$valid_op,true)){
 
   		xoops_cp_header();
 
-  		editcategory($clean_categoryid);
+  		editcategory($clean_category_id);
   		break;
   	case "addcategory":
-          include_once ICMS_ROOT_PATH."/kernel/icmspersistablecontroller.php";
-          $controller = new IcmsPersistableController($imtagging_category_handler);
+        include_once ICMS_ROOT_PATH."/kernel/icmspersistablecontroller.php";
+        $controller = new IcmsPersistableController($imtagging_category_handler);
   		$controller->storeFromDefaultForm(_AM_IMTAGGING_CATEGORY_CREATED, _AM_IMTAGGING_CATEGORY_MODIFIED);
 
   		break;
 
   	case "del":
   	    include_once ICMS_ROOT_PATH."/kernel/icmspersistablecontroller.php";
-          $controller = new IcmsPersistableController($imtagging_category_handler);
+        $controller = new IcmsPersistableController($imtagging_category_handler);
   		$controller->handleObjectDeletion();
 
   		break;
 
   	case "view" :
-  		$categoryObj = $imtagging_category_handler->get($clean_categoryid);
+  		include_once IMTAGGING_ROOT_PATH."class/icmspersistablesingleview.php";
 
-  		smart_xoops_cp_header();
-  		smart_adminMenu(1, _AM_IMTAGGING_CATEGORY_VIEW . ' > ' . $categoryObj->getVar('category_title'));
+  		$imtagging_category_link_handler = xoops_getModuleHandler('category_link');
 
-  		smart_collapsableBar('categoryview', $categoryObj->getVar('category_title') . $categoryObj->getEditItemLink(), _AM_IMTAGGING_CATEGORY_VIEW_DSC);
+  		$categoryObj = $imtagging_category_handler->get($clean_category_id);
+
+  		xoops_cp_header();
+		$xoopsModule->displayAdminMenu(0, _AM_IMTAGGING_CATEGORY_VIEW . ' > ' . $categoryObj->getVar('category_title'));
 
   		$categoryObj->displaySingleObject();
 
-  		smart_close_collapsable('categoryview');
-
-  		smart_collapsableBar('categoryview_categories', _AM_IMTAGGING_CATEGORIES, _AM_IMTAGGING_CATEGORIES_IN_CATEGORY_DSC);
-
   		$criteria = new CriteriaCompo();
-  		$criteria->add(new Criteria('categoryid', $clean_categoryid));
+  		$criteria->add(new Criteria('category_link_cid', $clean_category_id));
 
-  		$objectTable = new SmartObjectTable($imtagging_category_handler, $criteria);
-  		$objectTable->addColumn(new SmartObjectColumn('category_date', 'left', 150));
-  		$objectTable->addColumn(new SmartObjectColumn('category_message'));
-  		$objectTable->addColumn(new SmartObjectColumn('category_uid', 'left', 150));
+  		$objectTable = new IcmsPersistableTable($imtagging_category_link_handler);
+  		$objectTable->addColumn(new IcmsPersistableColumn('category_link_iid'));
+  		$objectTable->addColumn(new IcmsPersistableColumn('category_link_mid', 'left', '200'));
 
-  		$objectTable->addIntroButton('addcategory', 'category.php?op=mod&categoryid=' . $clean_categoryid, _AM_IMTAGGING_CATEGORY_CREATE);
+  		$icmsAdminTpl->assign('imtagging_category_link_table', $objectTable->fetch());
 
-  		$objectTable->render();
-
-  		smart_close_collapsable('categoryview_categories');
+  		$icmsAdminTpl->display('db:imtagging_admin_category.html');
 
   		break;
 
@@ -118,9 +114,8 @@ if (in_array($clean_op,$valid_op,true)){
 
   		$xoopsModule->displayAdminMenu(0, _AM_IMTAGGING_CATEGORIES);
 
-  		include_once ICMS_ROOT_PATH."/kernel/icmspersistabletreetable.php";
   		$objectTable = new IcmsPersistableTreeTable($imtagging_category_handler);
-  		$objectTable->addColumn(new IcmsPersistableColumn('category_title', 'left', '200'));
+  		$objectTable->addColumn(new IcmsPersistableColumn('category_title', 'left', '200', 'getAdminViewItemLink'));
   		$objectTable->addColumn(new IcmsPersistableColumn('category_description'));
 
   		$objectTable->addIntroButton('addcategory', 'category.php?op=mod', _AM_IMTAGGING_CATEGORY_CREATE);
