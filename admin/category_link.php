@@ -21,15 +21,41 @@ function editcategory_link($category_link_id = 0)
 	global $imtagging_category_link_handler, $xoopsModule, $icmsAdminTpl;
 
 	$category_linkObj = $imtagging_category_link_handler->get($category_link_id);
+	$category_linkObj->hideFieldFromForm(array('category_link_item', 'category_link_iid'));
+
+	if (isset($_POST['op'])) {
+		$controller = new IcmsPersistableController($imtagging_category_link_handler);
+		$controller->postDataToObject($category_linkObj);
+		if ($_POST['op'] == 'changedField') {
+
+			switch($_POST['changedField']) {
+				case 'category_link_mid' :
+					if ($category_linkObj->getVar('category_link_mid', 'e')) {
+						$category_linkObj->showFieldOnForm('category_link_item');
+						$category_linkObj->setVar('category_link_iid', 0);
+					}
+				break;
+
+				case 'category_link_item' :
+					if ($category_linkObj->getVar('category_link_item', 'e')) {
+						$category_linkObj->showFieldOnForm(array('category_link_item', 'category_link_iid'));
+					}
+				break;
+			}
+		}
+	} else {
+		$category_linkObj->showFieldOnForm(array('category_link_item', 'category_link_iid'));
+	}
 
 	if (!$category_linkObj->isNew()){
-
 		$xoopsModule->displayAdminMenu(0, _AM_IMTAGGING_CATEGORIES . " > " . _CO_ICMS_EDITING);
 		$sform = $category_linkObj->getForm(_AM_IMTAGGING_CATEGORY_LINK_EDIT, 'addcategory_link');
 		$sform->assign($icmsAdminTpl);
 
 	} else {
 		$xoopsModule->displayAdminMenu(0, _AM_IMTAGGING_CATEGORIES . " > " . _CO_ICMS_CREATINGNEW);
+
+
 		$sform = $category_linkObj->getForm(_AM_IMTAGGING_CATEGORY_LINK_CREATE, 'addcategory_link');
 		$sform->assign($icmsAdminTpl);
 
@@ -38,6 +64,7 @@ function editcategory_link($category_link_id = 0)
 }
 
 include_once("admin_header.php");
+include_once ICMS_ROOT_PATH."/kernel/icmspersistablecontroller.php";
 
 $imtagging_category_link_handler = xoops_getModuleHandler('category_link');
 /** Use a naming convention that indicates the source of the content of the variable */
@@ -69,15 +96,14 @@ if (in_array($clean_op,$valid_op,true)){
   		editcategory_link($clean_category_link_id);
   		break;
   	case "addcategory_link":
-        include_once ICMS_ROOT_PATH."/kernel/icmspersistablecontroller.php";
+
         $controller = new IcmsPersistableController($imtagging_category_link_handler);
   		$controller->storeFromDefaultForm(_AM_IMTAGGING_CATEGORY_LINK_CREATED, _AM_IMTAGGING_CATEGORY_LINK_MODIFIED);
 
   		break;
 
   	case "del":
-  	    include_once ICMS_ROOT_PATH."/kernel/icmspersistablecontroller.php";
-          $controller = new IcmsPersistableController($imtagging_category_link_handler);
+        $controller = new IcmsPersistableController($imtagging_category_link_handler);
   		$controller->handleObjectDeletion();
 
   		break;

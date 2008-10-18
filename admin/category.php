@@ -93,7 +93,7 @@ if (in_array($clean_op,$valid_op,true)){
   		xoops_cp_header();
 		$xoopsModule->displayAdminMenu(0, _AM_IMTAGGING_CATEGORY_VIEW . ' > ' . $categoryObj->getVar('category_title'));
 
-  		$categoryObj->displaySingleObject();
+  		$icmsAdminTpl->assign('imtagging_category_singleobject', $categoryObj->displaySingleObject());
 
   		$criteria = new CriteriaCompo();
   		$criteria->add(new Criteria('category_link_cid', $clean_category_id));

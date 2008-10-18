@@ -24,12 +24,13 @@ class ImtaggingCategoryTreeElement extends XoopsFormSelect {
 
         $categories = $category_handler->getObjects($criteria);
 
-        include_once(ICMS_ROOT_PATH . "/class/tree.php");
-        $mytree = new XoopsObjectTree($categories, "category_id", "category_pid");
+        include_once(ICMS_ROOT_PATH . "/modules/imtagging/class/icmspersistabletree.php");
+        $mytree = new IcmsPersistableTree($categories, "category_id", "category_pid");
         $this->XoopsFormSelect( $object->vars[$key]['form_caption'], $key, $object->getVar($key, 'e') );
 
         $ret = array();
         $options = $this->getOptionArray($mytree, $category_title_field, 0, "", $ret);
+
         if ($addNoParent) {
         	$newOptions = array('0'=>'----');
         	foreach ($options as $k=>$v) {

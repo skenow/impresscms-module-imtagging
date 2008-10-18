@@ -37,6 +37,16 @@ class ImtaggingCategory_link extends IcmsPersistableObject {
 			'itemHandler' => 'category',
 			'module' => 'imtagging'
 		));
+
+		$this->setControl('category_link_mid', array(
+				'name'=>'module',
+				'onSelect' => 'submit'
+			));
+		$this->setControl('category_link_item', array(
+				'name'=>'item',
+				'onSelect' => 'submit'
+			));
+		$this->setControl('category_link_iid', 'itemid');
     }
 
     /**
