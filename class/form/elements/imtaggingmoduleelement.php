@@ -19,10 +19,14 @@ class ImtaggingModuleElement extends XoopsFormSelect {
         $criteria = new CriteriaCompo();
         $criteria->add(new Criteria('isactive', true));
         $criteria->setSort('name');
-        $modules_array = $module_handler->getList($criteria);
+        $modulesObj = $module_handler->getObjects($criteria);
+        foreach($modulesObj as $moduleObj) {
+			$moduleObj->loadInfo($moduleObj->dirname());
+			if (isset($moduleObj->modinfo['object_items'])) {
+				$modules_array[$moduleObj->mid()] = $moduleObj->name();
+			}
+        }
         $this->addOptionArray(array(0=>_CO_IMTAGGING_CATEGORY_LINK_MID_SELECT) + $modules_array);
     }
-
-
 }
 ?>
