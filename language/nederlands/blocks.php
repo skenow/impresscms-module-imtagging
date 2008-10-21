@@ -10,7 +10,7 @@
 * @version		$Id$
 */
 
-if (!defined("ICMS_ROOT_PATH")) die("ICMS root path not defined");
+if ( !defined( 'ICMS_ROOT_PATH' ) ) die( 'ICMS root path not defined' );
 
-define("_MB_IMTAGGING_TAG_RECENT_LIMIT", "Tag limiet: ");
+define( '_MB_IMTAGGING_TAG_RECENT_LIMIT', 'Tag limiet: ' );
 ?>

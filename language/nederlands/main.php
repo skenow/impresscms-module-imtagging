@@ -10,13 +10,13 @@
 * @version		$Id$
 */
 
-if (!defined("ICMS_ROOT_PATH")) die("ICMS root path not defined");
+if ( !defined( 'ICMS_ROOT_PATH' ) ) die( 'ICMS root path not defined' );
 
 
-define('_MD_IMTAGGING_ADMIN_PAGE', ':: Admin pagina ::');
-define('_MD_IMTAGGING_TAG_EDIT', 'Bewerk tag');
-define('_MD_IMTAGGING_TAG_SUBMIT', 'Inzenden tag');
-define('_MD_IMTAGGING_TAG_MODIFIED', 'De tag iss succesvol bijgewerkt.');
-define('_MD_IMTAGGING_TAG_CREATED', 'De tag is succesvol aangemaakt.');
-define('_MD_IMTAGGING_SECURITY_CHECK_FAILED', 'Beveiligingscontrolle faalde...');
+define( '_MD_IMTAGGING_ADMIN_PAGE', ':: Admin pagina ::' );
+define( '_MD_IMTAGGING_TAG_EDIT', 'Bewerk tag' );
+define( '_MD_IMTAGGING_TAG_SUBMIT', 'Inzenden tag' );
+define( '_MD_IMTAGGING_TAG_MODIFIED', 'De tag is succesvol bijgewerkt.' );
+define( '_MD_IMTAGGING_TAG_CREATED', 'De tag is succesvol aangemaakt.' );
+define( '_MD_IMTAGGING_SECURITY_CHECK_FAILED', 'Beveiligingscontrolle faalde...' );
 ?>
