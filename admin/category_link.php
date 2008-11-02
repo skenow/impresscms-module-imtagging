@@ -43,12 +43,15 @@ function editcategory_link($category_link_id = 0)
 				break;
 			}
 		}
-	} else {
-		$category_linkObj->showFieldOnForm(array('category_link_item', 'category_link_iid'));
 	}
 
 	if (!$category_linkObj->isNew()){
 		$xoopsModule->displayAdminMenu(0, _AM_IMTAGGING_CATEGORIES . " > " . _CO_ICMS_EDITING);
+
+		if (!isset($_POST['changedField'])) {
+			$category_linkObj->showFieldOnForm(array('category_link_item', 'category_link_iid'));
+		}
+
 		$sform = $category_linkObj->getForm(_AM_IMTAGGING_CATEGORY_LINK_EDIT, 'addcategory_link');
 		$sform->assign($icmsAdminTpl);
 

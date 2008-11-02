@@ -80,11 +80,6 @@ class ImtaggingCategory_link extends IcmsPersistableObject {
     	}
     }
 
-	function getCategory_linkModule() {
-    	$module_handler = xoops_getHandler('module');
-    	return $module_handler->get($this->getVar('category_link_mid', 'e'));
-	}
-
     function category_link_mid() {
     	$mid = $this->getVar('category_link_mid', 'e');
     	$moduleObj = $this->getCategory_linkModule();
@@ -93,6 +88,11 @@ class ImtaggingCategory_link extends IcmsPersistableObject {
     	} else {
     		return '';
     	}
+    }
+
+    function getCategory_linkModule(){
+    	$module_handler = xoops_getHandler('module');
+    	return $module_handler->get($this->getVar('category_link_mid', 'e'));
     }
 
     function category_link_iid() {
@@ -105,7 +105,6 @@ class ImtaggingCategory_link extends IcmsPersistableObject {
 		} else {
 			return '';
 		}
-
     }
 }
 
@@ -116,6 +115,63 @@ class ImtaggingCategory_linkHandler extends IcmsPersistableObjectHandler {
 	 */
     public function __construct(&$db){
         $this->IcmsPersistableObjectHandler($db, 'category_link', 'category_link_id', 'category_link_iid', '', 'imtagging');
+    }
+
+    function getCategoriesForObject($iid, $item, $module=false) {
+    	if (!$module) {
+    		global $xoopsModule;
+    		$module = $xoopsModule->dirname();
+    	}
+    	$moduleObj = icms_getModuleInfo($module);
+
+    	$criteria = new CriteriaCompo();
+    	$criteria->add(new Criteria('category_link_mid', $moduleObj->mid()));
+    	$criteria->add(new Criteria('category_link_item', $item));
+    	$criteria->add(new Criteria('category_link_iid', $iid));
+    	$sql = 'SELECT category_link_cid FROM ' . $this->table;
+    	$rows = $this->query($sql, $criteria);
+    	$ret = array();
+    	foreach($rows as $row) {
+    		$ret[] = $row['category_link_cid'];
+    	}
+    	return $ret;
+    }
+
+	function deleteAllForObject(&$obj) {
+		/**
+		 * @todo: add $moduleObj as a static var
+		 */
+		$moduleObj = icms_getModuleInfo($obj->handler->_moduleName);
+    	$mid = $moduleObj->mid();
+
+		$criteria = new CriteriaCompo();
+		$criteria->add(new Criteria('category_link_mid', $mid));
+		$criteria->add(new Criteria('category_link_item', $obj->handler->_itemname));
+		$criteria->add(new Criteria('category_link_iid', $obj->id()));
+
+		$this->deleteAll($criteria);
+	}
+
+    function storeCategoriesForObject(&$obj, $category_var='categories') {
+		/**
+		 * @todo: check if categories have changed and if so don't do anything
+		 */
+
+		// delete all current categories linked to this object
+		$this->deleteAllForObject($obj);
+
+		$moduleObj = icms_getModuleInfo($obj->handler->_moduleName);
+
+		$category_array = $obj->getVar($category_var);
+
+		foreach($category_array as $category) {
+			$category_linkObj = $this->create();
+			$category_linkObj->setVar('category_link_mid', $moduleObj->mid());
+			$category_linkObj->setVar('category_link_item', $obj->handler->_itemname);
+			$category_linkObj->setVar('category_link_iid', $obj->id());
+			$category_linkObj->setVar('category_link_cid', $category);
+			$this->insert($category_linkObj);
+		}
     }
 }
 ?>

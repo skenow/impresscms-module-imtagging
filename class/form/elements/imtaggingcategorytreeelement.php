@@ -15,7 +15,10 @@ class ImtaggingCategoryTreeElement extends XoopsFormSelect {
     function ImtaggingCategoryTreeElement($object, $key) {
         $itemHandler = isset($object->controls[$key]['itemHandler']) ? $object->controls[$key]['itemHandler'] : 'category';
         $module = isset($object->controls[$key]['module']) ? $object->controls[$key]['module'] : $object->handler->_moduleName;
-		$category_handler = xoops_getmodulehandler('category', $object->handler->_moduleName);
+        $multiple = isset($object->controls[$key]['multiple']) ? $object->controls[$key]['multiple'] : false;
+		if ($multiple) $select_size=5;
+
+		$category_handler = xoops_getmodulehandler('category', $module);
 
 		$category_title_field = $category_handler->identifierName;
     	$addNoParent = isset($object->controls[$key]['addNoParent']) ? $object->controls[$key]['addNoParent'] : true;
@@ -26,7 +29,7 @@ class ImtaggingCategoryTreeElement extends XoopsFormSelect {
 
         include_once(ICMS_ROOT_PATH . "/modules/imtagging/class/icmspersistabletree.php");
         $mytree = new IcmsPersistableTree($categories, "category_id", "category_pid");
-        $this->XoopsFormSelect( $object->vars[$key]['form_caption'], $key, $object->getVar($key, 'e') );
+        $this->XoopsFormSelect( $object->vars[$key]['form_caption'], $key, $object->getVar($key, 'e'), $select_size, $multiple );
 
         $ret = array();
         $options = $this->getOptionArray($mytree, $category_title_field, 0, "", $ret);

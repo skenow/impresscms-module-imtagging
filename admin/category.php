@@ -98,7 +98,7 @@ if (in_array($clean_op,$valid_op,true)){
   		$criteria = new CriteriaCompo();
   		$criteria->add(new Criteria('category_link_cid', $clean_category_id));
 
-  		$objectTable = new IcmsPersistableTable($imtagging_category_link_handler);
+  		$objectTable = new IcmsPersistableTable($imtagging_category_link_handler, $criteria);
   		$objectTable->addColumn(new IcmsPersistableColumn('category_link_iid'));
   		$objectTable->addColumn(new IcmsPersistableColumn('category_link_mid', 'left', '200'));
 
