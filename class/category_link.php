@@ -137,6 +137,22 @@ class ImtaggingCategory_linkHandler extends IcmsPersistableObjectHandler {
     	return $ret;
     }
 
+    function getItemidsForCategory($cid, &$handler=false) {
+    	$moduleObj = icms_getModuleInfo($handler->_moduleName);
+
+    	$criteria = new CriteriaCompo();
+    	$criteria->add(new Criteria('category_link_mid', $moduleObj->mid()));
+    	$criteria->add(new Criteria('category_link_item', $handler->_itemname));
+    	$criteria->add(new Criteria('category_link_cid', $cid));
+    	$sql = 'SELECT category_link_iid FROM ' . $this->table;
+    	$rows = $this->query($sql, $criteria);
+    	$ret = array();
+    	foreach($rows as $row) {
+    		$ret[] = $row['category_link_iid'];
+    	}
+    	return $ret;
+    }
+
 	function deleteAllForObject(&$obj) {
 		/**
 		 * @todo: add $moduleObj as a static var
