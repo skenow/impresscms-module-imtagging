@@ -100,6 +100,16 @@ class ImtaggingCategoryHandler extends IcmsPersistableObjectHandler {
         $this->IcmsPersistableObjectHandler($db, 'category', 'category_id', 'category_title', 'category_description', 'imtagging');
     }
 
+    function getCategoryName($category_id) {
+    	$icms_persistable_registry = IcmsPersistableRegistry::getInstance();
+    	$catgeoryObj = $icms_persistable_registry->getSingleObject('category', $category_id, 'imtagging');
+    	if ($catgeoryObj && !$catgeoryObj->isNew()) {
+    		return $catgeoryObj->getVar('category_title');
+    	} else {
+    		return false;
+    	}
+    }
+
 	/**
 	 * BeforeSave event
 	 *
