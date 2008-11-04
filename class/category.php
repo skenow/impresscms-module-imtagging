@@ -15,6 +15,7 @@ if (!defined("ICMS_ROOT_PATH")) die("ICMS root path not defined");
 include_once ICMS_ROOT_PATH."/kernel/icmspersistableseoobject.php";
 
 class ImtaggingCategory extends IcmsPersistableSeoObject {
+	public $items=false;
 
     /**
      * Constructor

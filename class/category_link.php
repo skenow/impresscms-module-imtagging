@@ -117,22 +117,60 @@ class ImtaggingCategory_linkHandler extends IcmsPersistableObjectHandler {
         $this->IcmsPersistableObjectHandler($db, 'category_link', 'category_link_id', 'category_link_iid', '', 'imtagging');
     }
 
-    function getCategoriesForObject($iid, $item, $module=false) {
-    	if (!$module) {
-    		global $xoopsModule;
-    		$module = $xoopsModule->dirname();
-    	}
-    	$moduleObj = icms_getModuleInfo($module);
+	/**
+	 * retrieve category_ids for an object
+	 *
+	 * @param int $iid id of the related object
+	 * @param object IcmsPersistableHandler
+	 * @return array array of category_ids
+	 */
+    function getCategoriesForObject($iid, &$handler) {
+    	$moduleObj = icms_getModuleInfo($handler->_moduleName);
 
     	$criteria = new CriteriaCompo();
     	$criteria->add(new Criteria('category_link_mid', $moduleObj->mid()));
-    	$criteria->add(new Criteria('category_link_item', $item));
+    	$criteria->add(new Criteria('category_link_item', $handler->_itemname));
     	$criteria->add(new Criteria('category_link_iid', $iid));
     	$sql = 'SELECT category_link_cid FROM ' . $this->table;
     	$rows = $this->query($sql, $criteria);
     	$ret = array();
     	foreach($rows as $row) {
     		$ret[] = $row['category_link_cid'];
+    	}
+    	return $ret;
+    }
+
+	/**
+	 * retrieve categories that are linked to an array of object ids
+	 *
+	 * @param array $iids array of object ids
+	 * @param object $handler IcmsPersistableHandler
+	 * @return array array of ImtaggingCategory objects
+	 */
+    function getCategoriesFromObjectIds($iids, &$handler) {
+    	$moduleObj = icms_getModuleInfo($handler->_moduleName);
+    	$criteria = new CriteriaCompo();
+    	$criteria->add(new Criteria('category_link_mid', $moduleObj->mid()));
+    	$criteria->add(new Criteria('category_link_item', $handler->_itemname));
+    	$criteria->add(new Criteria('category_link_iid', '(' . implode(', ', $iids) . ')', 'IN'));
+
+    	$sql = 'SELECT category_link_cid, category_link_iid FROM ' . $this->table;
+    	$rows = $this->query($sql, $criteria, false, true);
+
+    	$category_ids = array();
+    	$iids_by_cid = array();
+    	foreach($rows as $row) {
+    		$iids_by_cid[$row['category_link_cid']][] = $row['category_link_iid'];
+    	}
+
+    	$imtagging_category_handler = xoops_getModuleHandler('category', 'imtagging');
+    	$criteria = new CriteriaCompo();
+    	$criteria->add(new Criteria('category_id', '(' . implode(', ', array_keys($iids_by_cid)) . ')', 'IN'));
+    	$ret = $imtagging_category_handler->getObjects($criteria);
+
+    	// add iids to each categoryObj
+    	foreach ($ret as $categoryObj) {
+			$categoryObj->items[$handler->_moduleName][$handler->_itemname] = $iids_by_cid[$categoryObj->id()];
     	}
     	return $ret;
     }
