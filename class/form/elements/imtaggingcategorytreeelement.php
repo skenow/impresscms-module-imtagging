@@ -11,37 +11,50 @@
 
 if (!defined("ICMS_ROOT_PATH")) die("ICMS root path not defined");
 
-class ImtaggingCategoryTreeElement extends XoopsFormSelect {
+class ImtaggingCategoryTreeElement extends XoopsFormElementTray {
     function ImtaggingCategoryTreeElement($object, $key) {
+
+		// Creating Tray
+		$var = $object->vars[$key];
+		$this->XoopsFormElementTray($var['form_caption'], '', $key);
+
+		// Creating check boxes
         $itemHandler = isset($object->controls[$key]['itemHandler']) ? $object->controls[$key]['itemHandler'] : 'category';
         $module = isset($object->controls[$key]['module']) ? $object->controls[$key]['module'] : $object->handler->_moduleName;
-        $multiple = isset($object->controls[$key]['multiple']) ? $object->controls[$key]['multiple'] : false;
-		if ($multiple) $select_size=5;
-
 		$category_handler = xoops_getmodulehandler('category', $module);
 
 		$category_title_field = $category_handler->identifierName;
-    	$addNoParent = isset($object->controls[$key]['addNoParent']) ? $object->controls[$key]['addNoParent'] : true;
     	$criteria = new CriteriaCompo();
         $criteria->setSort("weight, " . $category_title_field);
 
         $categories = $category_handler->getObjects($criteria);
 
         include_once(ICMS_ROOT_PATH . "/modules/imtagging/class/icmspersistabletree.php");
+        include_once(ICMS_ROOT_PATH . "/modules/imtagging/class/form/elements/imtaggingcategorycheckboxelement.php");
         $mytree = new IcmsPersistableTree($categories, "category_id", "category_pid");
-        $this->XoopsFormSelect( $object->vars[$key]['form_caption'], $key, $object->getVar($key, 'e'), $select_size, $multiple );
+        $check_box = new ImtaggingCategoryCheckboxElement(null, $key, $object->getVar($key, 'e'), '<br />');
 
         $ret = array();
         $options = $this->getOptionArray($mytree, $category_title_field, 0, "", $ret);
+        $check_box->addOptionArray($options);
 
-        if ($addNoParent) {
-        	$newOptions = array('0'=>'----');
-        	foreach ($options as $k=>$v) {
-        		$newOptions[$k] = $v;
-        	}
-        	$options = $newOptions;
-        }
-        $this->addOptionArray($options);
+        $this->addElement($check_box);
+
+		// new category container
+		include_once(ICMS_ROOT_PATH . "/modules/imtagging/class/form/elements/imtaggingtrayelement.php");
+		$new_category_tray = new ImtaggingTrayElement(null, null, 'new_category_link');
+
+		$new_category_label = new XoopsFormLabel(null, '<a href="#" onclick="jQuery(\'#new_category_tray\').toggle()">+ Add new category</a><br />');
+		$this->addElement($new_category_label);
+
+		// add a category
+		$new_category_tray = new ImtaggingTrayElement(null, null, 'new_category_tray');
+		$category_text = new XoopsFormText('New category title', 'new_category_title', 40, 255);
+		$new_category_tray->addElement($category_text);
+		$butt_create = new XoopsFormButton('', 'create_button', _CO_ICMS_CREATE, 'button');
+		$butt_create->setExtra('onclick="imtaggingAddCategory();"');
+		$new_category_tray->addElement($butt_create);
+		$this->addElement($new_category_tray);
     }
 
     /**

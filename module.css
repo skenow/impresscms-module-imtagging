@@ -37,5 +37,13 @@
 #imtagging_navbar {
 	text-align: center;
 }
-
-
+#imtagging_categories_container {
+	border:	1px solid #d0d0d0;
+	padding: .5em;
+	display: block;
+	width: 200px;
+	overflow: auto;
+	height: 75px;
+	float: left;
+	margin-right: 10px;
+}
