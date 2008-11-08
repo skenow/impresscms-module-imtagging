@@ -49,7 +49,16 @@ class ImtaggingCategoryTreeElement extends XoopsFormElementTray {
 
 		// add a category
 		$new_category_tray = new ImtaggingTrayElement(null, null, 'new_category_tray');
-		$category_text = new XoopsFormText('New category title', 'new_category_title', 40, 255);
+
+		$parent_cateory_select = new XoopsFormSelect('<br />Parent category', 'category_pid', 0);
+		$parent_options = array(0=>'-----');
+		foreach ($options as $k=>$v) {
+			$parent_options[$k] = $v;
+		}
+		$parent_cateory_select->addOptionArray($parent_options);
+		$new_category_tray->addElement($parent_cateory_select);
+
+		$category_text = new XoopsFormText('<br />' . 'New category title', 'new_category_title', 40, 255);
 		$new_category_tray->addElement($category_text);
 		$butt_create = new XoopsFormButton('', 'create_button', _CO_ICMS_CREATE, 'button');
 		$butt_create->setExtra('onclick="imtaggingAddCategory();"');
