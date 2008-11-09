@@ -14,6 +14,8 @@ if (!defined("ICMS_ROOT_PATH")) die("ICMS root path not defined");
 // including the IcmsPersistabelSeoObject
 include_once ICMS_ROOT_PATH."/kernel/icmspersistableseoobject.php";
 
+icms_loadLanguageFile('imtagging', 'common');
+
 class ImtaggingCategory extends IcmsPersistableSeoObject {
 	public $items=false;
 
