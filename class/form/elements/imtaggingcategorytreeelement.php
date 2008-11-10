@@ -11,7 +11,9 @@
 
 if (!defined("ICMS_ROOT_PATH")) die("ICMS root path not defined");
 
-class ImtaggingCategoryTreeElement extends XoopsFormElementTray {
+include_once(ICMS_ROOT_PATH . "/modules/imtagging/class/form/elements/imtaggingtrayelement.php");
+
+class ImtaggingCategoryTreeElement extends ImtaggingTrayElement {
     function ImtaggingCategoryTreeElement($object, $key) {
 
 		// Creating Tray
@@ -19,6 +21,7 @@ class ImtaggingCategoryTreeElement extends XoopsFormElementTray {
 		$this->XoopsFormElementTray($var['form_caption'], '', $key);
 
 		// Creating check boxes
+
         $itemHandler = isset($object->controls[$key]['itemHandler']) ? $object->controls[$key]['itemHandler'] : 'category';
         $module = isset($object->controls[$key]['module']) ? $object->controls[$key]['module'] : $object->handler->_moduleName;
 		$category_handler = xoops_getmodulehandler('category', $module);
@@ -45,7 +48,7 @@ class ImtaggingCategoryTreeElement extends XoopsFormElementTray {
 		$this->addElement($new_category_label);
 
 		// new category container
-		include_once(ICMS_ROOT_PATH . "/modules/imtagging/class/form/elements/imtaggingtrayelement.php");
+
 		$new_category_tray = new ImtaggingTrayElement(null, null, 'new_category_tray');
 
 		// new category title
@@ -68,7 +71,6 @@ class ImtaggingCategoryTreeElement extends XoopsFormElementTray {
 
 		$this->addElement($new_category_tray);
     }
-
     /**
      * Get options for a category select with hierarchy (recursive)
      *
