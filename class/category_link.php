@@ -155,7 +155,7 @@ class ImtaggingCategory_linkHandler extends IcmsPersistableObjectHandler {
     	$criteria->add(new Criteria('category_link_iid', '(' . implode(', ', $iids) . ')', 'IN'));
 
     	$sql = 'SELECT category_link_cid, category_link_iid FROM ' . $this->table;
-    	$rows = $this->query($sql, $criteria, false, true);
+    	$rows = $this->query($sql, $criteria);
 
     	$category_ids = array();
     	$iids_by_cid = array();
