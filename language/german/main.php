@@ -17,5 +17,5 @@ define('_MD_IMTAGGING_TAG_EDIT', 'Tag bearbeiten');
 define('_MD_IMTAGGING_TAG_SUBMIT', 'Tag hinzufügen');
 define('_MD_IMTAGGING_TAG_MODIFIED', 'Der Tag wurde aktualisiert.');
 define('_MD_IMTAGGING_TAG_CREATED', 'Der Tag wurde erstellt.');
-define('_MD_IMTAGGING_SECURITY_CHECK_FAILED', 'Security check failed...');
+define('_MD_IMTAGGING_SECURITY_CHECK_FAILED', 'Sicherheitscheck fehlgeschlagen... bitte erneut versuchen.');
 ?>

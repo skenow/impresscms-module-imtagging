@@ -16,7 +16,7 @@ if (!defined("ICMS_ROOT_PATH")) die("ICMS root path not defined");
 
 global $xoopsModule;
 define("_MI_IMTAGGING_MD_NAME", "imTagging");
-define("_MI_IMTAGGING_MD_DESC", "ImpressCMS Categorising and tagging module");
+define("_MI_IMTAGGING_MD_DESC", "ImpressCMS Kategorisierung- und Tag-Module");
 
 define("_MI_IMTAGGING_TAGS", "Tags");
 define("_MI_IMTAGGING_CATEGORIES", "Kategorien");
@@ -30,7 +30,7 @@ define("_MI_IMTAGGING_LIMITDSC", "Number of tags to display on user side.");
 // Blocks
 define("_MI_IMTAGGING_TAGRECENT", "Recent tags");
 define("_MI_IMTAGGING_TAGRECENTDSC", "Display most recent tags");
-define("_MI_IMTAGGING_TAGBYMONTH", "Tags by month");
+define("_MI_IMTAGGING_TAGBYMONTH", "Tags nach Monat");
 define("_MI_IMTAGGING_TAGBYMONTHDSC", "Display list of months in which there were tags");
 
 // Notifications
