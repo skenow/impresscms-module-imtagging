@@ -15,6 +15,7 @@ if (!defined("ICMS_ROOT_PATH")) die("ICMS root path not defined");
 
 function imtagging_search($queryarray, $andor, $limit, $offset, $userid)
 {
+	/*
 	$imtagging_tag_handler = xoops_getModuleHandler('tag', 'imtagging');
 	$tagsArray = $imtagging_tag_handler->getTagsForSearch($queryarray, $andor, $limit, $offset, $userid);
 
@@ -28,6 +29,7 @@ function imtagging_search($queryarray, $andor, $limit, $offset, $userid)
 		unset($item);
 	}
 	return $ret;
+	*/
 }
 
 ?>
