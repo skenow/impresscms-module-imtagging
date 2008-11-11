@@ -18,38 +18,38 @@ define("_AM_IMTAGGING_CATEGORIES", "Categories");
 define("_AM_IMTAGGING_FIRST_USE", "Esta é a primeira vez que você acessando este módulo. Atualize o módulo agora para criar a base de dados.");
 
 // Category
-define("_AM_IMTAGGING_CATEGORIES_DSC", "All categories in the module");
-define("_AM_IMTAGGING_CATEGORY_CREATE", "Add a category");
-define("_AM_IMTAGGING_CATEGORY", "Category");
-define("_AM_IMTAGGING_CATEGORY_CREATE_INFO", "Fill-out the following form to create a new category.");
-define("_AM_IMTAGGING_CATEGORY_EDIT", "Edit this category");
-define("_AM_IMTAGGING_CATEGORY_EDIT_INFO", "Fill-out the following form in order to edit this category.");
-define("_AM_IMTAGGING_CATEGORY_MODIFIED", "The category was successfully modified.");
-define("_AM_IMTAGGING_CATEGORY_CREATED", "The category has been successfully created.");
-define("_AM_IMTAGGING_CATEGORY_VIEW", "Category info");
-define("_AM_IMTAGGING_CATEGORY_VIEW_DSC", "Here is the info about this category.");
+define("_AM_IMTAGGING_CATEGORIES_DSC", "Todas as categorias no módulo");
+define("_AM_IMTAGGING_CATEGORY_CREATE", "Incluir categoria");
+define("_AM_IMTAGGING_CATEGORY", "Categoria");
+define("_AM_IMTAGGING_CATEGORY_CREATE_INFO", "Preencha o seguinte formulário para criar uma nova categoria.");
+define("_AM_IMTAGGING_CATEGORY_EDIT", "Editar esta categoria");
+define("_AM_IMTAGGING_CATEGORY_EDIT_INFO", "Preencher o seguinte formulário para modificar esta categoria.");
+define("_AM_IMTAGGING_CATEGORY_MODIFIED", "A categoria foi modificada com sucesso.");
+define("_AM_IMTAGGING_CATEGORY_CREATED", "A categoria foi criada com sucesso.");
+define("_AM_IMTAGGING_CATEGORY_VIEW", "Informações da categoria");
+define("_AM_IMTAGGING_CATEGORY_VIEW_DSC", "Aqui está a informação sobre esta categoria.");
 
 // Category_link
-define("_AM_IMTAGGING_CATEGORY_LINK_LINKS_DSC", "All category linksin the module");
-define("_AM_IMTAGGING_CATEGORY_LINK_CREATE", "Add a category link");
-define("_AM_IMTAGGING_CATEGORY_LINK", "Category link");
-define("_AM_IMTAGGING_CATEGORY_LINK_CREATE_INFO", "Fill-out the following form to create a new category link.");
-define("_AM_IMTAGGING_CATEGORY_LINK_EDIT", "Edit this category link");
-define("_AM_IMTAGGING_CATEGORY_LINK_EDIT_INFO", "Fill-out the following form in order to edit this category link.");
-define("_AM_IMTAGGING_CATEGORY_LINK_MODIFIED", "The category link was successfully modified.");
-define("_AM_IMTAGGING_CATEGORY_LINK_CREATED", "The category link has been successfully created.");
-define("_AM_IMTAGGING_CATEGORY_LINK_VIEW", "Category link info");
-define("_AM_IMTAGGING_CATEGORY_LINK_VIEW_DSC", "Here is the info about this category link.");
+define("_AM_IMTAGGING_CATEGORY_LINK_LINKS_DSC", "Todas as categorias agregadas no módulo");
+define("_AM_IMTAGGING_CATEGORY_LINK_CREATE", "Incluir um link para a categoria");
+define("_AM_IMTAGGING_CATEGORY_LINK", "Link da Categoria");
+define("_AM_IMTAGGING_CATEGORY_LINK_CREATE_INFO", "Preencha o seguinte formulário para criar um novo link na categoria.");
+define("_AM_IMTAGGING_CATEGORY_LINK_EDIT", "Editar este link de categoria");
+define("_AM_IMTAGGING_CATEGORY_LINK_EDIT_INFO", "Preencha o seguinte formulário para modificar este linkd de categoria.");
+define("_AM_IMTAGGING_CATEGORY_LINK_MODIFIED", "O link da categoria foi modificado com sucesso.");
+define("_AM_IMTAGGING_CATEGORY_LINK_CREATED", "O link da categoria foi criado com sucesso.");
+define("_AM_IMTAGGING_CATEGORY_LINK_VIEW", "Informação do link da Categoria");
+define("_AM_IMTAGGING_CATEGORY_LINK_VIEW_DSC", "Aqui está as Informações sobre o link desta categoria.");
 
 // Tag
-define("_AM_IMTAGGING_TAGS_DSC", "All tags in the module");
-define("_AM_IMTAGGING_TAG_CREATE", "Add a tag");
+define("_AM_IMTAGGING_TAGS_DSC", "Todas as tags no module");
+define("_AM_IMTAGGING_TAG_CREATE", "Incluir tag");
 define("_AM_IMTAGGING_TAG", "Tag");
-define("_AM_IMTAGGING_TAG_CREATE_INFO", "Fill-out the following form to create a new tag.");
-define("_AM_IMTAGGING_TAG_EDIT", "Edit this tag");
-define("_AM_IMTAGGING_TAG_EDIT_INFO", "Fill-out the following form in order to edit this tag.");
-define("_AM_IMTAGGING_TAG_MODIFIED", "The tag was successfully modified.");
-define("_AM_IMTAGGING_TAG_CREATED", "The tag has been successfully created.");
-define("_AM_IMTAGGING_TAG_VIEW", "Tag info");
-define("_AM_IMTAGGING_TAG_VIEW_DSC", "Here is the info about this tag.");
+define("_AM_IMTAGGING_TAG_CREATE_INFO", "Preencha o seguinte formulário para criar uma nova Tag/etiqueta.");
+define("_AM_IMTAGGING_TAG_EDIT", "Editar esta tag");
+define("_AM_IMTAGGING_TAG_EDIT_INFO", "Preencha o seguinte formulário para modificar esta tag.");
+define("_AM_IMTAGGING_TAG_MODIFIED", "A Tag/etiqueta foi modificada com sucesso.");
+define("_AM_IMTAGGING_TAG_CREATED", "A Tag/etiqueta foi criada com sucesso.");
+define("_AM_IMTAGGING_TAG_VIEW", "Informação da Tag");
+define("_AM_IMTAGGING_TAG_VIEW_DSC", "Aqui está a informação sobre esta tag.");
 ?>
