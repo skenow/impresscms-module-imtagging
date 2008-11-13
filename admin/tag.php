@@ -18,17 +18,17 @@
 */
 function edittag($tag_id = 0)
 {
-	global $imtagging_tag_handler, $xoopsModule, $icmsAdminTpl;
+	global $imtagging_tag_handler, $xoopsModule, $xoopsUser, $icmsAdminTpl;
 
 	$tagObj = $imtagging_tag_handler->get($tag_id);
 
 	if (!$tagObj->isNew()){
-
 		$xoopsModule->displayAdminMenu(1, _AM_IMTAGGING_TAGS . " > " . _CO_ICMS_EDITING);
 		$sform = $tagObj->getForm(_AM_IMTAGGING_TAG_EDIT, 'addtag');
 		$sform->assign($icmsAdminTpl);
 
 	} else {
+		$tagObj->setVar('tag_uid', $xoopsUser->uid());
 		$xoopsModule->displayAdminMenu(1, _AM_IMTAGGING_TAGS . " > " . _CO_ICMS_CREATINGNEW);
 		$sform = $tagObj->getForm(_AM_IMTAGGING_TAG_CREATE, 'addtag');
 		$sform->assign($icmsAdminTpl);
