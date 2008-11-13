@@ -15,9 +15,8 @@
 include_once '../../../include/cp_header.php';
 
 include_once ICMS_ROOT_PATH.'/modules/' . basename(dirname(dirname(__FILE__))) .'/include/common.php';
-
 if( !defined("IMTAGGING_ADMIN_URL") ) define('IMTAGGING_ADMIN_URL', IMTAGGING_URL . "admin/");
-
+include_once(IMTAGGING_ROOT_PATH . 'include/requirements.php');
 /**
 * First use page of the module
 *

@@ -11,6 +11,12 @@
 
 if (!defined("ICMS_ROOT_PATH")) die("ICMS root path not defined");
 
+// Requirements
+define("_AM_IMTAGGING_REQUIREMENTS", "imTagging Requirements");
+define("_AM_IMTAGGING_REQUIREMENTS_INFO", "We've reviewed your system, unfortunately it doesn't meet all the requirements needed for imTagging to function. Below are the requirements needed.");
+define("_AM_IMTAGGING_REQUIREMENTS_ICMS_BUILD", "imTagging requires at least ImpressCMS 1.1.1 RC 1.");
+define("_AM_IMTAGGING_REQUIREMENTS_SUPPORT", "Should you have any question or concerns, please visit our forums at <a href='http://community.impresscms.org'>http://community.impresscms.org</a>.");
+
 // general
 define("_AM_IMTAGGING_TAGS", "Tags");
 define("_AM_IMTAGGING_CATEGORIES", "Categories");
