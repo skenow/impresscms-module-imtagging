@@ -71,7 +71,7 @@ $modversion['search'] = array (
   'func' => "imtagging_search");
 
 /** Menu information */
-$modversion['hasMain'] = 1;
+$modversion['hasMain'] = 0;
 
 /** Blocks information */
 $modversion['blocks'][1] = array(
