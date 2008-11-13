@@ -17,7 +17,7 @@ $xoopsTpl->assign("imtagging_is_admin", $imtagging_isAdmin);
 $xoopsTpl->assign('imtagging_url', IMTAGGING_URL);
 $xoopsTpl->assign('imtagging_images_url', IMTAGGING_IMAGES_URL);
 
-$xoTheme->addStylesheet(IMTAGGING_URL . 'module.css');
+$xoTheme->addStylesheet(IMTAGGING_URL . 'module'.(( defined("_ADM_USE_RTL") && _ADM_USE_RTL )?'_rtl':'').'.css');
 
 $xoopsTpl->assign("ref_smartfactory", "imTagging is developed by The SmartFactory (http://smartfactory.ca), a division of INBOX International (http://inboxinternational.com)");
 

@@ -100,7 +100,7 @@ if (in_array($clean_op,$valid_op,true)){
 
   		$objectTable = new IcmsPersistableTable($imtagging_category_link_handler, $criteria);
   		$objectTable->addColumn(new IcmsPersistableColumn('category_link_iid'));
-  		$objectTable->addColumn(new IcmsPersistableColumn('category_link_mid', 'left', '200'));
+  		$objectTable->addColumn(new IcmsPersistableColumn('category_link_mid', _GLOBAL_LEFT, '200'));
 
   		$icmsAdminTpl->assign('imtagging_category_link_table', $objectTable->fetch());
 
@@ -115,7 +115,7 @@ if (in_array($clean_op,$valid_op,true)){
   		$xoopsModule->displayAdminMenu(0, _AM_IMTAGGING_CATEGORIES);
 
   		$objectTable = new IcmsPersistableTreeTable($imtagging_category_handler);
-  		$objectTable->addColumn(new IcmsPersistableColumn('category_title', 'left', '200', 'getAdminViewItemLink'));
+  		$objectTable->addColumn(new IcmsPersistableColumn('category_title', _GLOBAL_LEFT, '200', 'getAdminViewItemLink'));
   		$objectTable->addColumn(new IcmsPersistableColumn('category_description'));
 
   		$objectTable->addIntroButton('addcategory', 'category.php?op=mod', _AM_IMTAGGING_CATEGORY_CREATE);

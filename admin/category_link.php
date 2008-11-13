@@ -119,7 +119,7 @@ if (in_array($clean_op,$valid_op,true)){
 
   		include_once ICMS_ROOT_PATH."/kernel/icmspersistabletable.php";
   		$objectTable = new IcmsPersistableTable($imtagging_category_link_handler);
-  		$objectTable->addColumn(new IcmsPersistableColumn('category_link_cid', 'left', '200'));
+  		$objectTable->addColumn(new IcmsPersistableColumn('category_link_cid', _GLOBAL_LEFT, '200'));
   		$objectTable->addColumn(new IcmsPersistableColumn('category_link_mid'));
   		$objectTable->addColumn(new IcmsPersistableColumn('category_link_item'));
   		$objectTable->addColumn(new IcmsPersistableColumn('category_link_iid'));

@@ -100,9 +100,9 @@ if (in_array($clean_op,$valid_op,true)){
   		$criteria->add(new Criteria('tag_id', $clean_tag_id));
 
   		$objectTable = new SmartObjectTable($imtagging_tag_handler, $criteria);
-  		$objectTable->addColumn(new SmartObjectColumn('tag_date', 'left', 150));
+  		$objectTable->addColumn(new SmartObjectColumn('tag_date', _GLOBAL_LEFT, 150));
   		$objectTable->addColumn(new SmartObjectColumn('tag_message'));
-  		$objectTable->addColumn(new SmartObjectColumn('tag_uid', 'left', 150));
+  		$objectTable->addColumn(new SmartObjectColumn('tag_uid', _GLOBAL_LEFT, 150));
 
   		$objectTable->addIntroButton('addtag', 'tag.php?op=mod&tag_id=' . $clean_tag_id, _AM_IMTAGGING_TAG_CREATE);
 
@@ -120,7 +120,7 @@ if (in_array($clean_op,$valid_op,true)){
 
   		include_once ICMS_ROOT_PATH."/kernel/icmspersistabletable.php";
   		$objectTable = new IcmsPersistableTable($imtagging_tag_handler);
-  		$objectTable->addColumn(new IcmsPersistableColumn('tag_title', 'left'));
+  		$objectTable->addColumn(new IcmsPersistableColumn('tag_title', _GLOBAL_LEFT));
   		$objectTable->addColumn(new IcmsPersistableColumn('tag_created_date', 'center', 150));
   		$objectTable->addColumn(new IcmsPersistableColumn('tag_uid', 'center', 150));
 
