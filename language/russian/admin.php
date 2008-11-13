@@ -14,7 +14,7 @@ if (!defined("ICMS_ROOT_PATH")) die("Не определен корневой п
 // Requirements
 define("_AM_IMTAGGING_REQUIREMENTS", "Требования imTagging");
 define("_AM_IMTAGGING_REQUIREMENTS_INFO", "Мы просмотрели Вашу систему, к сожалению она не содержит всего необходимого для функционирования модуля imTagging. Ниже представлены необходимые требования.");
-define("_AM_IMTAGGING_REQUIREMENTS_ICMS_BUILD", "Для правильного функционирования модуля imTagging требуется версия ImpressCMS 1.1.1 RC 1.");
+define("_AM_IMTAGGING_REQUIREMENTS_ICMS_BUILD", "Для правильного функционирования модуля imTagging требуется версия не ниже ImpressCMS 1.1.1 RC 1.");
 define("_AM_IMTAGGING_REQUIREMENTS_SUPPORT", "Если у Вас имеются вопросы или пожелания, пожалуйста, посетите наш форум на сайте <a href='http://community.impresscms.org'>http://community.impresscms.org</a>.");
 
 // general
