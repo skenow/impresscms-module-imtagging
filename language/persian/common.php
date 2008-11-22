@@ -36,7 +36,7 @@ define("_CO_IMTAGGING_CATEGORY_LINK_CATEGORY_LINK_IID", "مورد مربوطه")
 define("_CO_IMTAGGING_CATEGORY_LINK_CATEGORY_LINK_IID_DSC", "");
 define("_CO_IMTAGGING_CATEGORY_LINK_MID_SELECT", "ماژولی را انتخاب کنید");
 define("_CO_IMTAGGING_CATEGORY_LINK_ITEM_SELECT", "موردی را انتخاب کنید");
-define("_CO_IMTAGGING_CATEGORY_LINK_IID_SELECT", "Select an object...");
+define("_CO_IMTAGGING_CATEGORY_LINK_IID_SELECT", "شیئی را انتخاب کنید");
 
 // tag
 define("_CO_IMTAGGING_TAG_TAG_TITLE", "عنوان");

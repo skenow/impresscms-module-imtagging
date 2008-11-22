@@ -24,7 +24,7 @@ define("_MI_IMTAGGING_CATEGORIES", "شاخه‌ها");
 
 // Configs
 define("_MI_IMTAGGING_TAGERGR", "گروه‌های مجاز به ارسال برچسب");
-define("_MI_IMTAGGING_TAGERGRDSC", "Select the groups which are allowed to create new tags. Please note that a user belonging to one of these groups will be able to tag directly on the site. The module currently has no moderation feature.");
+define("_MI_IMTAGGING_TAGERGRDSC", "گروه‌های مجاز به ساختن برچسب را انتخاب کنید. لطفاً درنظر داشته باشید که چنانچه کاربری در چند گروه باشد و یکی از آن گروه‌ها را انتخاب کرده باشید، خودبخود به قسمت ارسال برچسب‌ها دسترسی خواهد داشت. این ماژول در حال حاضر قابلیت نظارت مدیریتی ندارد.");
 define("_MI_IMTAGGING_LIMIT", "محدودیت برچسب‌ها");
 define("_MI_IMTAGGING_LIMITDSC", "تعداد برچسب‌ها برای نمایش در قسمت کاربری.");
 
@@ -38,7 +38,7 @@ define("_MI_IMTAGGING_TAGBYMONTHDSC", "نمایش فهرست ماه‌هایی �
 define("_MI_IMTAGGING_GLOBAL_NOTIFY", "تمامی برچسب‌ها");
 define("_MI_IMTAGGING_GLOBAL_NOTIFY_DSC", "آگاه سازی از تمامی برچسب‌ها در سایت.");
 define("_MI_IMTAGGING_GLOBAL_TAG_PUBLISHED_NOTIFY", "برچسب جدیدی منتشر شد");
-define("_MI_IMTAGGING_GLOBAL_TAG_PUBLISHED_NOTIFY_CAP", "Notify me when a new tag is published");
-define("_MI_IMTAGGING_GLOBAL_TAG_PUBLISHED_NOTIFY_DSC", "Receive notification when any new tag is published.");
-define("_MI_IMTAGGING_GLOBAL_TAG_PUBLISHED_NOTIFY_SBJ", "[{X_SITENAME}] {X_MODULE} auto-notify : New tag published");
+define("_MI_IMTAGGING_GLOBAL_TAG_PUBLISHED_NOTIFY_CAP", "هروقت برچسب جدیدی منتشر شد مرا باخبر ساز");
+define("_MI_IMTAGGING_GLOBAL_TAG_PUBLISHED_NOTIFY_DSC", "دریافت آگاهسازی از آخرین برچسب‌های منتشر شده.");
+define("_MI_IMTAGGING_GLOBAL_TAG_PUBLISHED_NOTIFY_SBJ", "[{X_SITENAME}] {X_MODULE} آگاهسازی خودکار : برچسب تازه‌ای منتشر شد");
 ?>
