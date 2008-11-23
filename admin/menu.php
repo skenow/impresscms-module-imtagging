@@ -16,6 +16,10 @@ $adminmenu[$i]['title'] = _MI_IMTAGGING_CATEGORIES;
 $adminmenu[$i]['link'] = "admin/category.php";
 
 $i++;
+$adminmenu[$i]['title'] = _AM_IMTAGGING_CATEGORY_LINK;
+$adminmenu[$i]['link'] = "admin/category_link.php";
+
+$i++;
 $adminmenu[$i]['title'] = _MI_IMTAGGING_TAGS;
 $adminmenu[$i]['link'] = "admin/tag.php";
 

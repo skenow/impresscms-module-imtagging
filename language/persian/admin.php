@@ -36,16 +36,16 @@ define("_AM_IMTAGGING_CATEGORY_VIEW", "توضیحات شاخه");
 define("_AM_IMTAGGING_CATEGORY_VIEW_DSC", "اطلاعات درباره‌ی این شاخه.");
 
 // Category_link
-define("_AM_IMTAGGING_CATEGORY_LINK_LINKS_DSC", "All category links in the module");
-define("_AM_IMTAGGING_CATEGORY_LINK_CREATE", "Add a category link");
-define("_AM_IMTAGGING_CATEGORY_LINK", "آدرس شاخه");
-define("_AM_IMTAGGING_CATEGORY_LINK_CREATE_INFO", "Fill-out the following form to create a new category link.");
-define("_AM_IMTAGGING_CATEGORY_LINK_EDIT", "Edit this category link");
-define("_AM_IMTAGGING_CATEGORY_LINK_EDIT_INFO", "Fill-out the following form in order to edit this category link.");
-define("_AM_IMTAGGING_CATEGORY_LINK_MODIFIED", "The category link was successfully modified.");
-define("_AM_IMTAGGING_CATEGORY_LINK_CREATED", "The category link has been successfully created.");
-define("_AM_IMTAGGING_CATEGORY_LINK_VIEW", "Category link info");
-define("_AM_IMTAGGING_CATEGORY_LINK_VIEW_DSC", "Here is the info about this category link.");
+define("_AM_IMTAGGING_CATEGORY_LINK_LINKS_DSC", "تمامی شاخه‌های لینک شده در ماژول");
+define("_AM_IMTAGGING_CATEGORY_LINK_CREATE", "افزودن شاخه‌ی لینک شده");
+define("_AM_IMTAGGING_CATEGORY_LINK", "شاخه‌های لینک شده");
+define("_AM_IMTAGGING_CATEGORY_LINK_CREATE_INFO", "برای ساختن شاخه‌ی جدید فرم زیر را پر کنید.");
+define("_AM_IMTAGGING_CATEGORY_LINK_EDIT", "ویرایش این شاخه");
+define("_AM_IMTAGGING_CATEGORY_LINK_EDIT_INFO", "برای ویرایش این شاخه فرم زیر را پر کنید.");
+define("_AM_IMTAGGING_CATEGORY_LINK_MODIFIED", "شاخه با موفقیت تغییر کرد.");
+define("_AM_IMTAGGING_CATEGORY_LINK_CREATED", "شاخه با موفقیت ایجاد شد.");
+define("_AM_IMTAGGING_CATEGORY_LINK_VIEW", "اطلاعات شاخه");
+define("_AM_IMTAGGING_CATEGORY_LINK_VIEW_DSC", "اطلاعات درباره‌ی این شاخه.");
 
 // Tag
 define("_AM_IMTAGGING_TAGS_DSC", "تمامی برچسب‌های ماژول");
