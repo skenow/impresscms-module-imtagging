@@ -40,4 +40,5 @@ define("_MI_IMTAGGING_GLOBAL_TAG_PUBLISHED_NOTIFY", "New tag published");
 define("_MI_IMTAGGING_GLOBAL_TAG_PUBLISHED_NOTIFY_CAP", "Notify me when a new tag is published");
 define("_MI_IMTAGGING_GLOBAL_TAG_PUBLISHED_NOTIFY_DSC", "Receive notification when any new tag is published.");
 define("_MI_IMTAGGING_GLOBAL_TAG_PUBLISHED_NOTIFY_SBJ", "[{X_SITENAME}] {X_MODULE} auto-notify : New tag published");
+if (!defined("_AM_IMTAGGING_CATEGORY_LINK")){define("_AM_IMTAGGING_CATEGORY_LINK", "Category link");}
 ?>
