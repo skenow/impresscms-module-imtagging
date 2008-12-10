@@ -21,6 +21,16 @@ $clean_start = isset($_GET['start']) ? intval($_GET['start']) : 0;
 $clean_tag_uid = isset($_GET['uid']) ? intval($_GET['uid']) : false;
 $clean_year = isset($_GET['y']) ? intval($_GET['y']) : false;
 $clean_month = isset($_GET['m']) ? intval($_GET['m']) : false;
+$Basic_Check = defined ('_CALENDAR_TYPE') && _CALENDAR_TYPE == "jalali" && $xoopsConfig['use_ext_date'] == 1;
+if(!empty($_GET['y']) && !empty($_GET['m']) && $Basic_Check)
+{
+		$jyear = $clean_year;
+		$jmonth = $clean_month;
+		list($gyear, $gmonth, $gday) = jalali_to_gregorian( $jyear, $jmonth, '1' );
+		$clean_year =  $gyear;
+		$clean_month = $gmonth;
+
+}
 
 $imtagging_tag_handler = xoops_getModuleHandler('tag');
 
@@ -44,7 +54,17 @@ if ($clean_tag_uid) {
 	$xoopsTpl->assign('imtagging_category_path', sprintf(_CO_IMTAGGING_TAG_FROM_USER, icms_getLinkedUnameFromId($clean_tag_uid)));
 }
 if ($clean_year && $clean_month) {
-	$xoopsTpl->assign('imtagging_category_path', sprintf(_CO_IMTAGGING_TAG_FROM_MONTH, imtagging_getMonthNameById($clean_month), $clean_year));
+if($Basic_Check)
+{
+		$gyear = $clean_year;
+		$gmonth = $clean_month;
+		$gday = 1;
+		list($jyear, $jmonth, $jday) = gregorian_to_jalali( $gyear, $gmonth, $gday );
+		$clean_year =  icms_conv_nr2local($jyear);
+		$clean_month = $jmonth;
+
+}
+	$xoopsTpl->assign('imtagging_category_path', sprintf(_CO_IMTAGGING_TAG_FROM_MONTH, Icms_getMonthNameById($clean_month), $clean_year));
 }
 /** Include the module's footer */
 include_once 'footer.php';

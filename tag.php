@@ -68,14 +68,14 @@ if (in_array($clean_op,$valid_op,true)){
   switch ($clean_op) {
 	case "mod":
   		if ($clean_tag_id > 0 && $tagObj->isNew()) {
-			redirect_header(imtagging_getPreviousPage('index.php'), 3, _NOPERM);
+			redirect_header(icms_getPreviousPage('index.php'), 3, _NOPERM);
 		}
 		edittag($tagObj);
 		break;
 
 	case "addtag":
         if (!$xoopsSecurity->check()) {
-        	redirect_header(imtagging_getPreviousPage('index.php'), 3, _MD_IMTAGGING_SECURITY_CHECK_FAILED . implode('<br />', $xoopsSecurity->getErrors()));
+        	redirect_header(icms_getPreviousPage('index.php'), 3, _MD_IMTAGGING_SECURITY_CHECK_FAILED . implode('<br />', $xoopsSecurity->getErrors()));
         }
           include_once ICMS_ROOT_PATH.'/kernel/icmspersistablecontroller.php';
         $controller = new IcmsPersistableController($imtagging_tag_handler);
