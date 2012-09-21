@@ -18,18 +18,18 @@
 */
 function edittag($tag_id = 0)
 {
-	global $imtagging_tag_handler, $xoopsModule, $xoopsUser, $icmsAdminTpl;
+	global $imtagging_tag_handler, $icmsModule, $icmsUser, $icmsAdminTpl;
 
 	$tagObj = $imtagging_tag_handler->get($tag_id);
 
 	if (!$tagObj->isNew()){
-		$xoopsModule->displayAdminMenu(1, _AM_IMTAGGING_TAGS . " > " . _CO_ICMS_EDITING);
+		$icmsModule->displayAdminMenu(1, _AM_IMTAGGING_TAGS . " > " . _CO_ICMS_EDITING);
 		$sform = $tagObj->getForm(_AM_IMTAGGING_TAG_EDIT, 'addtag');
 		$sform->assign($icmsAdminTpl);
 
 	} else {
-		$tagObj->setVar('tag_uid', $xoopsUser->uid());
-		$xoopsModule->displayAdminMenu(1, _AM_IMTAGGING_TAGS . " > " . _CO_ICMS_CREATINGNEW);
+		$tagObj->setVar('tag_uid', $icmsUser->uid());
+		$icmsModule->displayAdminMenu(1, _AM_IMTAGGING_TAGS . " > " . _CO_ICMS_CREATINGNEW);
 		$sform = $tagObj->getForm(_AM_IMTAGGING_TAG_CREATE, 'addtag');
 		$sform->assign($icmsAdminTpl);
 
@@ -39,7 +39,7 @@ function edittag($tag_id = 0)
 
 include_once("admin_header.php");
 
-$imtagging_tag_handler = xoops_getModuleHandler('tag');
+$imtagging_tag_handler = icms_getModulehandler('tag');
 /** Use a naming convention that indicates the source of the content of the variable */
 $clean_op = '';
 /** Create a whitelist of valid values, be sure to use appropriate types for each value
@@ -64,7 +64,7 @@ if (in_array($clean_op,$valid_op,true)){
   	case "mod":
   	case "changedField":
 
-  		xoops_cp_header();
+  		icms_cp_header();
 
   		edittag($clean_tag_id);
   		break;
@@ -85,7 +85,7 @@ if (in_array($clean_op,$valid_op,true)){
   	case "view" :
   		$tagObj = $imtagging_tag_handler->get($clean_tag_id);
 
-  		smart_xoops_cp_header();
+  		smart_icms_cp_header();
   		smart_adminMenu(1, _AM_IMTAGGING_TAG_VIEW . ' > ' . $tagObj->getVar('tag_title'));
 
   		smart_collapsableBar('tagview', $tagObj->getVar('tag_title') . $tagObj->getEditItemLink(), _AM_IMTAGGING_TAG_VIEW_DSC);
@@ -114,9 +114,9 @@ if (in_array($clean_op,$valid_op,true)){
 
   	default:
 
-  		xoops_cp_header();
+  		icms_cp_header();
 
-  		$xoopsModule->displayAdminMenu(1, _AM_IMTAGGING_TAGS);
+  		$icmsModule->displayAdminMenu(2, _AM_IMTAGGING_TAGS);
 
   		include_once ICMS_ROOT_PATH."/kernel/icmspersistabletable.php";
   		$objectTable = new IcmsPersistableTable($imtagging_tag_handler);
@@ -132,7 +132,7 @@ if (in_array($clean_op,$valid_op,true)){
   		$icmsAdminTpl->display('db:imtagging_admin_tag.html');
   		break;
   }
-  xoops_cp_footer();
+  icms_cp_footer();
 }
 /**
  * If you want to have a specific action taken because the user input was invalid,

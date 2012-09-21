@@ -18,18 +18,18 @@
 */
 function editcategory($category_id = 0)
 {
-	global $imtagging_category_handler, $xoopsModule, $icmsAdminTpl;
+	global $imtagging_category_handler, $icmsModule, $icmsAdminTpl;
 
 	$categoryObj = $imtagging_category_handler->get($category_id);
 
 	if (!$categoryObj->isNew()){
 
-		$xoopsModule->displayAdminMenu(0, _AM_IMTAGGING_CATEGORIES . " > " . _CO_ICMS_EDITING);
+		$icmsModule->displayAdminMenu(0, _AM_IMTAGGING_CATEGORIES . " > " . _CO_ICMS_EDITING);
 		$sform = $categoryObj->getForm(_AM_IMTAGGING_CATEGORY_EDIT, 'addcategory');
 		$sform->assign($icmsAdminTpl);
 
 	} else {
-		$xoopsModule->displayAdminMenu(0, _AM_IMTAGGING_CATEGORIES . " > " . _CO_ICMS_CREATINGNEW);
+		$icmsModule->displayAdminMenu(0, _AM_IMTAGGING_CATEGORIES . " > " . _CO_ICMS_CREATINGNEW);
 		$sform = $categoryObj->getForm(_AM_IMTAGGING_CATEGORY_CREATE, 'addcategory');
 		$sform->assign($icmsAdminTpl);
 
@@ -40,7 +40,7 @@ function editcategory($category_id = 0)
 include_once("admin_header.php");
 include_once ICMS_ROOT_PATH."/kernel/icmspersistabletreetable.php";
 
-$imtagging_category_handler = xoops_getModuleHandler('category');
+$imtagging_category_handler = icms_getModulehandler('category');
 /** Use a naming convention that indicates the source of the content of the variable */
 $clean_op = '';
 /** Create a whitelist of valid values, be sure to use appropriate types for each value
@@ -65,7 +65,7 @@ if (in_array($clean_op,$valid_op,true)){
   	case "mod":
   	case "changedField":
 
-  		xoops_cp_header();
+  		icms_cp_header();
 
   		editcategory($clean_category_id);
   		break;
@@ -84,14 +84,14 @@ if (in_array($clean_op,$valid_op,true)){
   		break;
 
   	case "view" :
-  		include_once IMTAGGING_ROOT_PATH."class/icmspersistablesingleview.php";
+  		include_once ICMS_ROOT_PATH."/kernel/icmspersistablesingleview.php";
 
-  		$imtagging_category_link_handler = xoops_getModuleHandler('category_link');
+  		$imtagging_category_link_handler = icms_getModulehandler('category_link');
 
   		$categoryObj = $imtagging_category_handler->get($clean_category_id);
 
-  		xoops_cp_header();
-		$xoopsModule->displayAdminMenu(0, _AM_IMTAGGING_CATEGORY_VIEW . ' > ' . $categoryObj->getVar('category_title'));
+  		icms_cp_header();
+		$icmsModule->displayAdminMenu(0, _AM_IMTAGGING_CATEGORY_VIEW . ' > ' . $categoryObj->getVar('category_title'));
 
   		$icmsAdminTpl->assign('imtagging_category_singleobject', $categoryObj->displaySingleObject());
 
@@ -110,9 +110,9 @@ if (in_array($clean_op,$valid_op,true)){
 
   	default:
 
-  		xoops_cp_header();
+  		icms_cp_header();
 
-  		$xoopsModule->displayAdminMenu(0, _AM_IMTAGGING_CATEGORIES);
+  		$icmsModule->displayAdminMenu(0, _AM_IMTAGGING_CATEGORIES);
 
   		$objectTable = new IcmsPersistableTreeTable($imtagging_category_handler);
   		$objectTable->addColumn(new IcmsPersistableColumn('category_title', _GLOBAL_LEFT, '200', 'getAdminViewItemLink'));
@@ -126,7 +126,7 @@ if (in_array($clean_op,$valid_op,true)){
   		$icmsAdminTpl->display('db:imtagging_admin_category.html');
   		break;
   }
-  xoops_cp_footer();
+  icms_cp_footer();
 }
 /**
  * If you want to have a specific action taken because the user input was invalid,

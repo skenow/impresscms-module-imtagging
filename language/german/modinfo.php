@@ -14,7 +14,7 @@ if (!defined("ICMS_ROOT_PATH")) die("ICMS root path not defined");
 // Module Info
 // The name of this module
 
-global $xoopsModule;
+global $icmsModule;
 define("_MI_IMTAGGING_MD_NAME", "imTagging");
 define("_MI_IMTAGGING_MD_DESC", "ImpressCMS Kategorisierung- und Tag-Module");
 
@@ -40,4 +40,5 @@ define("_MI_IMTAGGING_GLOBAL_TAG_PUBLISHED_NOTIFY", "Neuer Tag veröffentlicht")
 define("_MI_IMTAGGING_GLOBAL_TAG_PUBLISHED_NOTIFY_CAP", "Mich benachrichtigen, wenn win neuer Tag veröffentlicht wurde");
 define("_MI_IMTAGGING_GLOBAL_TAG_PUBLISHED_NOTIFY_DSC", "Sende eine Benachrichtigung, sobald ein neuer Tag veröffentlicht wurde.");
 define("_MI_IMTAGGING_GLOBAL_TAG_PUBLISHED_NOTIFY_SBJ", "[{X_SITENAME}] {X_MODULE} auto-notify : Neuer Tag veröffentlicht");
+if (!defined("_AM_IMTAGGING_CATEGORY_LINK")){define("_AM_IMTAGGING_CATEGORY_LINK", "Kategorie-Link");}
 ?>

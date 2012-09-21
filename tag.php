@@ -17,7 +17,7 @@
 */
 function edittag($tagObj)
 {
-	global $imtagging_tag_handler, $xoopsTpl, $xoopsUser;
+	global $imtagging_tag_handler, $icmsTpl, $icmsUser;
 
 	if (!$tagObj->isNew()){
 		if (!$tagObj->userCanEditAndDelete()) {
@@ -25,18 +25,18 @@ function edittag($tagObj)
 		}
 		$tagObj->hideFieldFromForm(array('tag_published_date', 'tag_uid', 'meta_keywords', 'meta_description', 'short_url'));
 		$sform = $tagObj->getSecureForm(_MD_IMTAGGING_TAG_EDIT, 'addtag');
-		$sform->assign($xoopsTpl, 'imtagging_tagform');
-		$xoopsTpl->assign('imtagging_category_path', $tagObj->getVar('tag_title') . ' > ' . _EDIT);
+		$sform->assign($icmsTpl, 'imtagging_tagform');
+		$icmsTpl->assign('imtagging_category_path', $tagObj->getVar('tag_title') . ' > ' . _EDIT);
 	} else {
 		if (!$imtagging_tag_handler->userCanSubmit()) {
 			redirect_header(IMTAGGING_URL, 3, _NOPERM);
 		}
-		$tagObj->setVar('tag_uid', $xoopsUser->uid());
+		$tagObj->setVar('tag_uid', $icmsUser->uid());
 		$tagObj->setVar('tag_published_date', time());
 		$tagObj->hideFieldFromForm(array('tag_published_date', 'tag_uid', 'meta_keywords', 'meta_description', 'short_url'));
 		$sform = $tagObj->getSecureForm(_MD_IMTAGGING_TAG_SUBMIT, 'addtag');
-		$sform->assign($xoopsTpl, 'imtagging_tagform');
-		$xoopsTpl->assign('imtagging_category_path', _SUBMIT);
+		$sform->assign($icmsTpl, 'imtagging_tagform');
+		$icmsTpl->assign('imtagging_category_path', _SUBMIT);
 	}
 }
 
@@ -45,7 +45,7 @@ include_once 'header.php';
 $xoopsOption['template_main'] = 'imtagging_tag.html';
 include_once ICMS_ROOT_PATH . '/header.php';
 
-$imtagging_tag_handler = xoops_getModuleHandler('tag');
+$imtagging_tag_handler = icms_getModulehandler('tag');
 
 /** Use a naming convention that indicates the source of the content of the variable */
 $clean_op = '';
@@ -94,20 +94,20 @@ if (in_array($clean_op,$valid_op,true)){
   	    include_once ICMS_ROOT_PATH.'/kernel/icmspersistablecontroller.php';
         $controller = new IcmsPersistableController($imtagging_tag_handler);
 		$controller->handleObjectDeletionFromUserSide();
-		$xoopsTpl->assign('imtagging_category_path', $tagObj->getVar('tag_title') . ' > ' . _DELETE);
+		$icmsTpl->assign('imtagging_category_path', $tagObj->getVar('tag_title') . ' > ' . _DELETE);
 
 		break;
 
 	default:
 		if ($tagObj && !$tagObj->isNew() && $tagObj->accessGranted()) {
-			$xoopsTpl->assign('imtagging_tag', $tagObj->toArray());
-			$xoopsTpl->assign('imtagging_category_path', $tagObj->getVar('tag_title'));
+			$icmsTpl->assign('imtagging_tag', $tagObj->toArray());
+			$icmsTpl->assign('imtagging_category_path', $tagObj->getVar('tag_title'));
 		} else {
 			redirect_header(IMTAGGING_URL, 3, _NOPERM);
 		}
 
-		if ($xoopsModuleConfig['com_rule'] && $tagObj->getVar('tag_cancomment')) {
-			$xoopsTpl->assign('imtagging_tag_comment', true);
+		if ($icmsModuleConfig['com_rule'] && $tagObj->getVar('tag_cancomment')) {
+			$icmsTpl->assign('imtagging_tag_comment', true);
   			include_once ICMS_ROOT_PATH . '/include/comment_view.php';
 		}
 		break;
@@ -120,6 +120,6 @@ $icms_metagen = new IcmsMetagen($tagObj->getVar('tag_title'), $tagObj->getVar('m
 $icms_metagen->createMetaTags();
 
 }
-$xoopsTpl->assign('imtagging_module_home', imtagging_getModuleName(true, true));
+$icmsTpl->assign('imtagging_module_home', imtagging_getModuleName(true, true));
 include_once 'footer.php';
 ?>

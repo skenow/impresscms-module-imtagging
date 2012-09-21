@@ -26,11 +26,11 @@ include_once(IMTAGGING_ROOT_PATH . 'include/requirements.php');
 * of those tables are done when the module is updated, we need to force the wemaster to update the
 * module when he first enters the admin side of the module.
 */
-if (is_object($xoopsModule) && $xoopsModule->dirname() == IMTAGGING_DIRNAME) {
+if (is_object($icmsModule) && $icmsModule->dirname() == IMTAGGING_DIRNAME) {
 	// We are in the module
 	if (defined('XOOPS_CPFUNC_LOADED')) {
 		// We are in the admin side of the module
-		if (!$xoopsModule->getDBVersion()) {
+		if (!$icmsModule->getDBVersion()) {
 			redirect_header(ICMS_URL . '/modules/system/admin.php?fct=modulesadmin&op=update&module=' . IMTAGGING_DIRNAME, 4, _AM_IMTAGGING_FIRST_USE);
 			exit;
 		}

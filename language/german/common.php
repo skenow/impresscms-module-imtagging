@@ -46,5 +46,6 @@ define("_CO_IMTAGGING_TAG_TAG_CREATED_DATE", "Erstellungsdatum");
 define("_CO_IMTAGGING_TAG_TAG_CREATED_DATE_DSC", "");
 define("_CO_IMTAGGING_TAG_TAG_UID", "Erstellt durch");
 define("_CO_IMTAGGING_TAG_TAG_UID_DSC", "");
-
+define("_CO_IMTAGGING_TAG_TAG_CANCOMMENT", "Kann kommentieren?");
+define("_CO_IMTAGGING_TAG_TAG_CANCOMMENT_DSC", "");
 ?>

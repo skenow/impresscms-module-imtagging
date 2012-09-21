@@ -20,9 +20,9 @@ if (!defined("ICMS_ROOT_PATH")) die("ICMS root path not defined");
  * @return string URL of the admin side of the module
  */
 function imtagging_getModuleAdminLink($moduleName='imtagging') {
-	global $xoopsModule;
-	if (!$moduleName && (isset ($xoopsModule) && is_object($xoopsModule))) {
-		$moduleName = $xoopsModule->getVar('dirname');
+	global $icmsModule;
+	if (!$moduleName && (isset ($icmsModule) && is_object($icmsModule))) {
+		$moduleName = $icmsModule->getVar('dirname');
 	}
 	$ret = '';
 	if ($moduleName) {
@@ -36,8 +36,8 @@ function imtagging_getModuleAdminLink($moduleName='imtagging') {
  */
 function imtagging_getModuleName($withLink = true, $forBreadCrumb = false, $moduleName = false) {
 	if (!$moduleName) {
-		global $xoopsModule;
-		$moduleName = $xoopsModule->getVar('dirname');
+		global $icmsModule;
+		$moduleName = $icmsModule->getVar('dirname');
 	}
 	$icmsModule = icms_getModuleInfo($moduleName);
 	$icmsModuleConfig = icms_getModuleConfig($moduleName);
@@ -51,11 +51,11 @@ function imtagging_getModuleName($withLink = true, $forBreadCrumb = false, $modu
 /*	    $seoMode = smart_getModuleModeSEO($moduleName);
 	    if ($seoMode == 'rewrite') {
 	    	$seoModuleName = smart_getModuleNameForSEO($moduleName);
-	    	$ret = XOOPS_URL . '/' . $seoModuleName . '/';
+	    	$ret = ICMS_URL . '/' . $seoModuleName . '/';
 	    } elseif ($seoMode == 'pathinfo') {
-	    	$ret = XOOPS_URL . '/modules/' . $moduleName . '/seo.php/' . $seoModuleName . '/';
+	    	$ret = ICMS_URL . '/modules/' . $moduleName . '/seo.php/' . $seoModuleName . '/';
 	    } else {
-			$ret = XOOPS_URL . '/modules/' . $moduleName . '/';
+			$ret = ICMS_URL . '/modules/' . $moduleName . '/';
 	    }
 */
 		$ret = ICMS_URL . '/modules/' . $moduleName . '/';

@@ -25,7 +25,7 @@ class ImtaggingCategory extends IcmsPersistableSeoObject {
      * @param object $handler ImtaggingCategoryHandler object
      */
     public function __construct(&$handler){
-    	global $xoopsConfig;
+    	global $icmsConfig;
 
     	$this->IcmsPersistableObject($handler);
 
@@ -77,12 +77,12 @@ class ImtaggingCategory extends IcmsPersistableSeoObject {
 	 * @return bool true | false
 	 */
 	function need_do_br() {
-		global $xoopsConfig, $xoopsUser;
+		global $icmsConfig, $icmsUser;
 
 		$imtagging_module = icms_getModuleInfo('imtagging');
-		$groups = $xoopsUser->getGroups();
+		$groups = $icmsUser->getGroups();
 
-		$editor_default = $xoopsConfig['editor_default'];
+		$editor_default = $icmsConfig['editor_default'];
 		$gperm_handler = xoops_getHandler('groupperm');
 		if( file_exists( ICMS_EDITOR_PATH."/".$editor_default."/xoops_version.php" ) && $gperm_handler->checkRight('use_wysiwygeditor', $imtagging_module->mid(), $groups)){
 			return false;

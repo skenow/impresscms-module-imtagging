@@ -33,7 +33,7 @@ define('IMTAGGING_DB_VERSION', 1);
 function imtagging_db_upgrade_2() {
 }*/
 
-function xoops_module_update_imtagging($module) {
+function icms_module_update_imtagging($module) {
 	/**
 	 * Using the IcmsDatabaseUpdater to automaticallly manage the database upgrade dynamically
 	 * according to the class defined in the module
@@ -43,7 +43,7 @@ function xoops_module_update_imtagging($module) {
     return true;
 }
 
-function xoops_module_install_imtagging($module) {
+function icms_module_install_imtagging($module) {
 
 	return true;
 }

@@ -12,14 +12,14 @@
 
 if (!defined("ICMS_ROOT_PATH")) die("ICMS root path not defined");
 
-$xoopsTpl->assign("imtagging_adminpage", imtagging_getModuleAdminLink());
-$xoopsTpl->assign("imtagging_is_admin", $imtagging_isAdmin);
-$xoopsTpl->assign('imtagging_url', IMTAGGING_URL);
-$xoopsTpl->assign('imtagging_images_url', IMTAGGING_IMAGES_URL);
+$icmsTpl->assign("imtagging_adminpage", imtagging_getModuleAdminLink());
+$icmsTpl->assign("imtagging_is_admin", $imtagging_isAdmin);
+$icmsTpl->assign('imtagging_url', IMTAGGING_URL);
+$icmsTpl->assign('imtagging_images_url', IMTAGGING_IMAGES_URL);
 
 $xoTheme->addStylesheet(IMTAGGING_URL . 'module'.(( defined("_ADM_USE_RTL") && _ADM_USE_RTL )?'_rtl':'').'.css');
 
-$xoopsTpl->assign("ref_smartfactory", "imTagging is developed by The SmartFactory (http://smartfactory.ca), a division of INBOX International (http://inboxinternational.com)");
+$icmsTpl->assign("ref_smartfactory", "imTagging is developed by The SmartFactory (http://smartfactory.ca), a division of INBOX International (http://inboxinternational.com)");
 
 include_once(ICMS_ROOT_PATH . '/footer.php');
 

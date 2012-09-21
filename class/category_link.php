@@ -22,7 +22,7 @@ class ImtaggingCategory_link extends IcmsPersistableObject {
      * @param object $handler ImtaggingCategory_linkHandler object
      */
     public function __construct(&$handler){
-    	global $xoopsConfig;
+    	global $icmsConfig;
 
     	$this->IcmsPersistableObject($handler);
 
@@ -98,7 +98,7 @@ class ImtaggingCategory_link extends IcmsPersistableObject {
     function category_link_iid() {
 		$iid = $this->getVar('category_link_iid', 'e');
 		$moduleObj = $this->getCategory_linkModule();
-		$category_link_module_handler = xoops_getModulehandler($this->getVar('category_link_item'), $moduleObj->getVar('dirname'));
+		$category_link_module_handler = icms_getModulehandler($this->getVar('category_link_item'), $moduleObj->getVar('dirname'));
 		$category_link_object = $category_link_module_handler->get($iid);
 		if ($category_link_object && !$category_link_object->isNew()) {
 			return $category_link_object->getItemLink();
@@ -163,7 +163,7 @@ class ImtaggingCategory_linkHandler extends IcmsPersistableObjectHandler {
     		$iids_by_cid[$row['category_link_cid']][] = $row['category_link_iid'];
     	}
 
-    	$imtagging_category_handler = xoops_getModuleHandler('category', 'imtagging');
+    	$imtagging_category_handler = icms_getModulehandler('category', 'imtagging');
     	$criteria = new CriteriaCompo();
     	$criteria->add(new Criteria('category_id', '(' . implode(', ', array_keys($iids_by_cid)) . ')', 'IN'));
     	$ret = $imtagging_category_handler->getObjects($criteria);

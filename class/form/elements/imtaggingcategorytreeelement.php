@@ -25,7 +25,7 @@ class ImtaggingCategoryTreeElement extends ImtaggingTrayElement {
         $itemHandler = isset($object->controls[$key]['itemHandler']) ? $object->controls[$key]['itemHandler'] : 'category';
         $module = isset($object->controls[$key]['module']) ? $object->controls[$key]['module'] : $object->handler->_moduleName;
         $userside = isset($object->controls[$key]['userside']) ? $object->controls[$key]['userside'] : false;
-		$category_handler = xoops_getmodulehandler('category', $module);
+		$category_handler = icms_getModulehandler('category', $module);
 
 		$category_title_field = $category_handler->identifierName;
     	$criteria = new CriteriaCompo();
@@ -61,8 +61,10 @@ class ImtaggingCategoryTreeElement extends ImtaggingTrayElement {
 			// parent select box
 			$parent_cateory_select = new XoopsFormSelect(null, 'category_pid', 0);
 			$parent_options = array(0=>_CO_IMTAGGING_CATEGORY_CATEGORY_PID);
-			foreach ($options as $k=>$v) {
-				$parent_options[$k] = $v;
+			if (is_array($options)){
+				foreach ($options as $k=>$v) {
+					$parent_options[$k] = $v;
+				}
 			}
 			$parent_cateory_select->addOptionArray($parent_options);
 			$new_category_tray->addElement($parent_cateory_select);

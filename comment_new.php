@@ -14,7 +14,7 @@
 include_once 'header.php';
 $com_itemid = isset($_GET['com_itemid']) ? intval($_GET['com_itemid']) : 0;
 if ($com_itemid > 0) {
-	$imtagging_tag_handler = xoops_getModuleHandler('tag');
+	$imtagging_tag_handler = icms_getModulehandler('tag');
 	$tagObj = $imtagging_tag_handler->get($com_itemid);
 	if ($tagObj && !$tagObj->isNew()) {
 		//$com_replytext = _TAGEDBY.'&nbsp;<b>'.smartsection_getLinkedUnameFromId($itemObj->uid()) . '</b>&nbsp;'._DATE.'&nbsp;<b>'.$itemObj->dateSub().'</b><br /><br />'.$itemObj->summary();
