@@ -38,7 +38,7 @@ class ImtaggingCategoryTreeElement extends ImtaggingTrayElement {
         $mytree = new IcmsPersistableTree($categories, "category_id", "category_pid");
 		$options = $this->getOptionArray($mytree, $category_title_field, 0, "", $ret);
 
-        $check_box = new ImtaggingCategoryCheckboxElement(null, $key, $object->getVar($key, 'e'), '<br />');
+        $check_box = new ImtaggingCategoryCheckboxElement(null, $key . "[]", $object->getVar($key, 'e'), '<br />');
         $ret = array();
         $check_box->addOptionArray($options);
         $this->addElement($check_box);
