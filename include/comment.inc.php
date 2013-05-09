@@ -10,15 +10,12 @@
 * @author		marcan aka Marc-André Lanciault <marcan@smartfactory.ca>
 * @version		$Id$
 */
-function imtagging_com_update($item_id, $total_num)
-{
+
+function imtagging_com_update($item_id, $total_num) {
     $imtagging_tag_handler = icms_getModulehandler('tag', 'imtagging');
     $imtagging_tag_handler->updateComments($item_id, $total_num);
 }
 
-function imtagging_com_approve(&$comment)
-{
+function imtagging_com_approve(&$comment) {
     // notification mail here
 }
-
-?>

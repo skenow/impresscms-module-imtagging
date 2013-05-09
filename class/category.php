@@ -11,12 +11,10 @@
 
 if (!defined("ICMS_ROOT_PATH")) die("ICMS root path not defined");
 
-// including the IcmsPersistabelSeoObject
-include_once ICMS_ROOT_PATH."/kernel/icmspersistableseoobject.php";
 
 icms_loadLanguageFile('imtagging', 'common');
 
-class ImtaggingCategory extends IcmsPersistableSeoObject {
+class ImtaggingCategory extends icms_ipf_seo_Object {
 	public $items=false;
 
     /**
@@ -25,9 +23,8 @@ class ImtaggingCategory extends IcmsPersistableSeoObject {
      * @param object $handler ImtaggingCategoryHandler object
      */
     public function __construct(&$handler){
-    	global $icmsConfig;
 
-    	$this->IcmsPersistableObject($handler);
+    	parent::__construct($handler);
 
         $this->quickInitVar('category_id', XOBJ_DTYPE_INT, true);
         $this->quickInitVar('category_pid', XOBJ_DTYPE_INT, false);
@@ -37,7 +34,7 @@ class ImtaggingCategory extends IcmsPersistableSeoObject {
 
         $this->setControl('category_pid', array('name' => 'parentcategory'));
 
-		$this->IcmsPersistableSeoObject();
+		$this->initiateSEO();
     }
 
     /**
@@ -56,7 +53,7 @@ class ImtaggingCategory extends IcmsPersistableSeoObject {
     }
 
     function category_pid() {
-		$icms_persistable_registry = IcmsPersistableRegistry::getInstance();
+		$icms_persistable_registry = icms_ipf_registry_Handler::getInstance();
     	$ret = $this->getVar('category_pid', 'e');
 		$obj = $icms_persistable_registry->getSingleObject('category', $ret, 'imtagging');
 
@@ -77,14 +74,14 @@ class ImtaggingCategory extends IcmsPersistableSeoObject {
 	 * @return bool true | false
 	 */
 	function need_do_br() {
-		global $icmsConfig, $icmsUser;
+		global $icmsConfig;
 
 		$imtagging_module = icms_getModuleInfo('imtagging');
-		$groups = $icmsUser->getGroups();
+		$groups = icms::$user->getGroups();
 
 		$editor_default = $icmsConfig['editor_default'];
-		$gperm_handler = xoops_getHandler('groupperm');
-		if( file_exists( ICMS_EDITOR_PATH."/".$editor_default."/xoops_version.php" ) && $gperm_handler->checkRight('use_wysiwygeditor', $imtagging_module->mid(), $groups)){
+		$gperm_handler = icms::handler('icms_member_groupperm');
+		if( file_exists( ICMS_EDITOR_PATH . "/" . $editor_default . "/xoops_version.php" ) && $gperm_handler->checkRight('use_wysiwygeditor', $imtagging_module->getVar("mid"), $groups)){
 			return false;
 		} else {
 			return true;
@@ -92,7 +89,7 @@ class ImtaggingCategory extends IcmsPersistableSeoObject {
 	}
 }
 
-class ImtaggingCategoryHandler extends IcmsPersistableObjectHandler {
+class ImtaggingCategoryHandler extends icms_ipf_Handler {
 
 	public $parentName = 'category_pid';
 
@@ -100,11 +97,11 @@ class ImtaggingCategoryHandler extends IcmsPersistableObjectHandler {
 	 * Constructor
 	 */
     public function __construct(&$db){
-        $this->IcmsPersistableObjectHandler($db, 'category', 'category_id', 'category_title', 'category_description', 'imtagging');
+        parent::__construct($db, 'category', 'category_id', 'category_title', 'category_description', 'imtagging');
     }
 
     function getCategoryName($category_id) {
-    	$icms_persistable_registry = IcmsPersistableRegistry::getInstance();
+    	$icms_persistable_registry = icms_ipf_registry_Handler::getInstance();
     	$catgeoryObj = $icms_persistable_registry->getSingleObject('category', $category_id, 'imtagging');
     	if ($catgeoryObj && !$catgeoryObj->isNew()) {
     		return $catgeoryObj->getVar('category_title');
@@ -126,4 +123,3 @@ class ImtaggingCategoryHandler extends IcmsPersistableObjectHandler {
     	return true;
     }
 }
-?>

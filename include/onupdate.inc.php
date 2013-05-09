@@ -38,7 +38,7 @@ function icms_module_update_imtagging($module) {
 	 * Using the IcmsDatabaseUpdater to automaticallly manage the database upgrade dynamically
 	 * according to the class defined in the module
 	 */
-	$icmsDatabaseUpdater = XoopsDatabaseFactory::getDatabaseUpdater();
+	$icmsDatabaseUpdater = icms_db_legacy_Factory::getDatabaseUpdater();
 	$icmsDatabaseUpdater->moduleUpgrade($module);
     return true;
 }
@@ -47,5 +47,3 @@ function icms_module_install_imtagging($module) {
 
 	return true;
 }
-
-?>

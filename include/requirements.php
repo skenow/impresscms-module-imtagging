@@ -14,9 +14,9 @@ if (!defined("ICMS_ROOT_PATH")) die("ICMS root path not defined");
 
 $failed_requirements = array();
 
-/* ImpressCMS Builtd needs to be at lest 19 */
-if (ICMS_VERSION_BUILD < 19) {
-	$failed_requirements[] = _AM_IMTAGGING_REQUIREMENTS_ICMS_BUILD;
+/* ImpressCMS Builtd needs to be at least 50 - ImpressCMS 1.3 Final */
+if (ICMS_VERSION_BUILD < 50) {
+	$failed_requirements[] = sprintf(_AM_IMTAGGING_REQUIREMENTS_ICMS_BUILD, '1.3 Final');
 }
 
 if (count($failed_requirements) > 0) {
@@ -26,4 +26,3 @@ if (count($failed_requirements) > 0) {
 	icms_cp_footer();
 	exit;
 }
-?>

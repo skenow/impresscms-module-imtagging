@@ -1,3 +1,16 @@
-<b><u>=> Version 1.0 Final</u></b>
+1.1 RC
+Release Date: 10 May 2013
+
+- Completely refactored to comply with ImpressCMS 1.3 and 2.0
+- ImpressCMS 1.3 Final is required to use this module
+
+- missing functions added to handler to fix fatal errors
+
+Language changes
+* admin.php
++- define("_AM_IMTAGGING_REQUIREMENTS_ICMS_BUILD", "imTagging requires at least ImpressCMS %s");
+
+
+Version 1.0 Final
 
 - First public release of the module.

@@ -20,47 +20,7 @@ if (!defined("ICMS_ROOT_PATH")) die("ICMS root path not defined");
  * @return string URL of the admin side of the module
  */
 function imtagging_getModuleAdminLink($moduleName='imtagging') {
-	global $icmsModule;
-	if (!$moduleName && (isset ($icmsModule) && is_object($icmsModule))) {
-		$moduleName = $icmsModule->getVar('dirname');
-	}
-	$ret = '';
-	if ($moduleName) {
-		$ret = "<a href='" . ICMS_URL . "/modules/$moduleName/admin/index.php'>" ._MD_IMTAGGING_ADMIN_PAGE . "</a>";
-	}
-	return $ret;
-}
-
-/**
- * @todo to be move in icms core
- */
-function imtagging_getModuleName($withLink = true, $forBreadCrumb = false, $moduleName = false) {
-	if (!$moduleName) {
-		global $icmsModule;
-		$moduleName = $icmsModule->getVar('dirname');
-	}
-	$icmsModule = icms_getModuleInfo($moduleName);
-	$icmsModuleConfig = icms_getModuleConfig($moduleName);
-	if (!isset ($icmsModule)) {
-		return '';
-	}
-
-	if (!$withLink) {
-		return $icmsModule->getVar('name');
-	} else {
-/*	    $seoMode = smart_getModuleModeSEO($moduleName);
-	    if ($seoMode == 'rewrite') {
-	    	$seoModuleName = smart_getModuleNameForSEO($moduleName);
-	    	$ret = ICMS_URL . '/' . $seoModuleName . '/';
-	    } elseif ($seoMode == 'pathinfo') {
-	    	$ret = ICMS_URL . '/modules/' . $moduleName . '/seo.php/' . $seoModuleName . '/';
-	    } else {
-			$ret = ICMS_URL . '/modules/' . $moduleName . '/';
-	    }
-*/
-		$ret = ICMS_URL . '/modules/' . $moduleName . '/';
-		return '<a href="' . $ret . '">' . $icmsModule->getVar('name') . '</a>';
-	}
+	return icms_getModuleAdminLink($moduleName);
 }
 
 /**
@@ -72,14 +32,7 @@ function imtagging_getModuleName($withLink = true, $forBreadCrumb = false, $modu
  * @return string previous page URL
  */
 function imtagging_getPreviousPage($default=false) {
-	global $impresscms;
-	if (isset($impresscms->urls['previouspage'])) {
-		return $impresscms->urls['previouspage'];
-	} elseif($default) {
-		return $default;
-	} else {
-		return ICMS_URL;
-	}
+	return icms_getPreviousPage($default);
 }
 
 /**
@@ -91,44 +44,5 @@ function imtagging_getPreviousPage($default=false) {
  * @return string month name
  */
 function imtagging_getMonthNameById($month_id) {
-	icms_loadLanguageFile('core', 'calendar');
-	switch($month_id) {
-		case 1:
-			return _CAL_JANUARY;
-		break;
-		case 2:
-			return _CAL_FEBRUARY;
-		break;
-		case 3:
-			return _CAL_MARCH;
-		break;
-		case 4:
-			return _CAL_APRIL;
-		break;
-		case 5:
-			return _CAL_MAY;
-		break;
-		case 6:
-			return _CAL_JUNE;
-		break;
-		case 7:
-			return _CAL_JULY;
-		break;
-		case 8:
-			return _CAL_AUGUST;
-		break;
-		case 9:
-			return _CAL_SEPTEMBER;
-		break;
-		case 10:
-			return _CAL_OCTOBER;
-		break;
-		case 11:
-			return _CAL_NOVEMBER;
-		break;
-		case 12:
-			return _CAL_DECEMBER;
-		break;
-	}
+	return Icms_getMonthNameById($month_id);
 }
-?>

@@ -11,7 +11,7 @@
 
 if (!defined("ICMS_ROOT_PATH")) die("ICMS root path not defined");
 
-class ImtaggingTrayElement extends XoopsFormElementTray {
+class ImtaggingTrayElement extends icms_form_elements_Tray {
     function render() {
     	$ret = '<div id="' . $this->getName() . '">';
     	$ret .= parent::render();
@@ -19,4 +19,3 @@ class ImtaggingTrayElement extends XoopsFormElementTray {
     	return $ret;
     }
 }
-?>

@@ -9,10 +9,7 @@
 * @version		$Id$
 */
 
-include_once("admin_header.php");
+include_once "admin_header.php";
 
-include_once(ICMS_ROOT_PATH . "/kernel/icmsmoduleabout.php");
-$aboutObj = new IcmsModuleAbout();
+$aboutObj = new icms_ipf_About();
 $aboutObj->render();
-
-?>

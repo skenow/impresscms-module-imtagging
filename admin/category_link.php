@@ -16,15 +16,14 @@
  *
  * @param int $category_link_id Category_linkid to be edited
 */
-function editcategory_link($category_link_id = 0)
-{
-	global $imtagging_category_link_handler, $icmsModule, $icmsAdminTpl;
+function editcategory_link($category_link_id = 0) {
+	global $imtagging_category_link_handler, $icmsAdminTpl;
 
 	$category_linkObj = $imtagging_category_link_handler->get($category_link_id);
 	$category_linkObj->hideFieldFromForm(array('category_link_item', 'category_link_iid'));
 
 	if (isset($_POST['op'])) {
-		$controller = new IcmsPersistableController($imtagging_category_link_handler);
+		$controller = new icms_ipf_Controller($imtagging_category_link_handler);
 		$controller->postDataToObject($category_linkObj);
 		if ($_POST['op'] == 'changedField') {
 
@@ -46,7 +45,7 @@ function editcategory_link($category_link_id = 0)
 	}
 
 	if (!$category_linkObj->isNew()){
-		$icmsModule->displayAdminMenu(1, _AM_IMTAGGING_CATEGORIES . " > " . _CO_ICMS_EDITING);
+		icms::$module->displayAdminMenu(1, _AM_IMTAGGING_CATEGORIES . " > " . _CO_ICMS_EDITING);
 
 		if (!isset($_POST['changedField'])) {
 			$category_linkObj->showFieldOnForm(array('category_link_item', 'category_link_iid'));
@@ -56,7 +55,7 @@ function editcategory_link($category_link_id = 0)
 		$sform->assign($icmsAdminTpl);
 
 	} else {
-		$icmsModule->displayAdminMenu(0, _AM_IMTAGGING_CATEGORIES . " > " . _CO_ICMS_CREATINGNEW);
+		icms::$module->displayAdminMenu(0, _AM_IMTAGGING_CATEGORIES . " > " . _CO_ICMS_CREATINGNEW);
 
 
 		$sform = $category_linkObj->getForm(_AM_IMTAGGING_CATEGORY_LINK_CREATE, 'addcategory_link');
@@ -66,8 +65,7 @@ function editcategory_link($category_link_id = 0)
 	$icmsAdminTpl->display('db:imtagging_admin_category_link.html');
 }
 
-include_once("admin_header.php");
-include_once ICMS_ROOT_PATH."/kernel/icmspersistablecontroller.php";
+include_once "admin_header.php";
 
 $imtagging_category_link_handler = icms_getModulehandler('category_link');
 /** Use a naming convention that indicates the source of the content of the variable */
@@ -100,13 +98,13 @@ if (in_array($clean_op,$valid_op,true)){
   		break;
   	case "addcategory_link":
 
-        $controller = new IcmsPersistableController($imtagging_category_link_handler);
+        $controller = new icms_ipf_Controller($imtagging_category_link_handler);
   		$controller->storeFromDefaultForm(_AM_IMTAGGING_CATEGORY_LINK_CREATED, _AM_IMTAGGING_CATEGORY_LINK_MODIFIED);
 
   		break;
 
   	case "del":
-        $controller = new IcmsPersistableController($imtagging_category_link_handler);
+        $controller = new icms_ipf_Controller($imtagging_category_link_handler);
   		$controller->handleObjectDeletion();
 
   		break;
@@ -115,14 +113,13 @@ if (in_array($clean_op,$valid_op,true)){
 
   		icms_cp_header();
 
-  		$icmsModule->displayAdminMenu(1, _AM_IMTAGGING_CATEGORIES);
+  		icms::$module->displayAdminMenu(1, _AM_IMTAGGING_CATEGORIES);
 
-  		include_once ICMS_ROOT_PATH."/kernel/icmspersistabletable.php";
-  		$objectTable = new IcmsPersistableTable($imtagging_category_link_handler);
-  		$objectTable->addColumn(new IcmsPersistableColumn('category_link_cid', _GLOBAL_LEFT, '200'));
-  		$objectTable->addColumn(new IcmsPersistableColumn('category_link_mid'));
-  		$objectTable->addColumn(new IcmsPersistableColumn('category_link_item'));
-  		$objectTable->addColumn(new IcmsPersistableColumn('category_link_iid'));
+  		$objectTable = new icms_ipf_view_Table($imtagging_category_link_handler);
+  		$objectTable->addColumn(new icms_ipf_view_Column('category_link_cid', _GLOBAL_LEFT, '200'));
+  		$objectTable->addColumn(new icms_ipf_view_Column('category_link_mid'));
+  		$objectTable->addColumn(new icms_ipf_view_Column('category_link_item'));
+  		$objectTable->addColumn(new icms_ipf_view_Column('category_link_iid'));
 
   		$objectTable->addIntroButton('addcategory_link', 'category_link.php?op=mod', _AM_IMTAGGING_CATEGORY_LINK_CREATE);
 
@@ -133,8 +130,8 @@ if (in_array($clean_op,$valid_op,true)){
   }
   icms_cp_footer();
 }
+
 /**
  * If you want to have a specific action taken because the user input was invalid,
  * place it at this point. Otherwise, a blank page will be displayed
  */
-?>

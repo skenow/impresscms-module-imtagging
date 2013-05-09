@@ -14,7 +14,7 @@
 
 include_once '../../../include/cp_header.php';
 
-include_once ICMS_ROOT_PATH.'/modules/' . basename(dirname(dirname(__FILE__))) .'/include/common.php';
+include_once ICMS_MODULES_PATH . '/' . basename(dirname(dirname(__FILE__))) . '/include/common.php';
 if( !defined("IMTAGGING_ADMIN_URL") ) define('IMTAGGING_ADMIN_URL', IMTAGGING_URL . "admin/");
 include_once(IMTAGGING_ROOT_PATH . 'include/requirements.php');
 /**
@@ -26,15 +26,13 @@ include_once(IMTAGGING_ROOT_PATH . 'include/requirements.php');
 * of those tables are done when the module is updated, we need to force the wemaster to update the
 * module when he first enters the admin side of the module.
 */
-if (is_object($icmsModule) && $icmsModule->dirname() == IMTAGGING_DIRNAME) {
+if (is_object(icms::$module) && icms::$module->getVar("dirname") == IMTAGGING_DIRNAME) {
 	// We are in the module
 	if (defined('XOOPS_CPFUNC_LOADED')) {
 		// We are in the admin side of the module
-		if (!$icmsModule->getDBVersion()) {
-			redirect_header(ICMS_URL . '/modules/system/admin.php?fct=modulesadmin&op=update&module=' . IMTAGGING_DIRNAME, 4, _AM_IMTAGGING_FIRST_USE);
+		if (!icms::$module->getDBVersion()) {
+			redirect_header(ICMS_MODULES_URL . '/system/admin.php?fct=modulesadmin&op=update&module=' . IMTAGGING_DIRNAME, 4, _AM_IMTAGGING_FIRST_USE);
 			exit;
 		}
 	}
 }
-
-?>

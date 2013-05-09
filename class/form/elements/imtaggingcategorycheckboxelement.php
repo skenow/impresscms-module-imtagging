@@ -11,7 +11,7 @@
 
 if (!defined("ICMS_ROOT_PATH")) die("ICMS root path not defined");
 
-class ImtaggingCategoryCheckboxElement extends XoopsFormCheckBox {
+class ImtaggingCategoryCheckboxElement extends icms_form_elements_Checkbox {
     function render() {
     	$ret = '<div id="imtagging_categories_container">';
     	$ret .= parent::render();
@@ -19,4 +19,3 @@ class ImtaggingCategoryCheckboxElement extends XoopsFormCheckBox {
     	return $ret;
     }
 }
-?>

@@ -11,10 +11,8 @@
 
 if (!defined("ICMS_ROOT_PATH")) die("ICMS root path not defined");
 
-// including the IcmsPersistabelSeoObject
-include_once ICMS_ROOT_PATH."/kernel/icmspersistableseoobject.php";
 
-class ImtaggingTag extends IcmsPersistableSeoObject {
+class ImtaggingTag extends icms_ipf_seo_Object {
 
     /**
      * Constructor
@@ -24,7 +22,7 @@ class ImtaggingTag extends IcmsPersistableSeoObject {
     public function __construct(&$handler){
     	global $icmsConfig;
 
-    	$this->IcmsPersistableObject($handler);
+    	parent::__construct($handler);
 
         $this->quickInitVar('tag_id', XOBJ_DTYPE_INT, true);
         $this->quickInitVar('tag_title', XOBJ_DTYPE_TXTBOX);
@@ -36,7 +34,7 @@ class ImtaggingTag extends IcmsPersistableSeoObject {
 		$this->setControl('tag_cancomment', 'yesno');
 		$this->setControl('tag_uid', 'user');
 
-		$this->IcmsPersistableSeoObject();
+		$this->initiateSEO();
     }
 
 
@@ -61,16 +59,23 @@ class ImtaggingTag extends IcmsPersistableSeoObject {
 	 * @return str name of the tager
 	 */
     function tag_uid() {
-        return icms_getLinkedUnameFromId($this->getVar('tag_uid', 'e'));
+        return icms_member_user_Handler::getUserLink($this->getVar('tag_uid', 'e'));
     }
 }
-class ImtaggingTagHandler extends IcmsPersistableObjectHandler {
+class ImtaggingTagHandler extends icms_ipf_Handler {
 
 	/**
 	 * Constructor
 	 */
     public function __construct(&$db){
-        $this->IcmsPersistableObjectHandler($db, 'tag', 'tag_id', 'tag_title', 'tag_description', 'imtagging');
+        parent::__construct($db, 'tag', 'tag_id', 'tag_title', 'tag_description', 'imtagging');
+    }
+    
+    public function getTags($start = 0, $limit = 0, $userid = FALSE, $year = FALSE, $month = FALSE) {
+    	
+    }
+    
+    public function getTagsCount($userid = FALSE, $year = FALSE, $month = FALSE) {
+    	
     }
 }
-?>

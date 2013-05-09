@@ -9,39 +9,38 @@
 * @version		$Id$
 */
 
-$i = -1;
 
-$i++;
-$adminmenu[$i]['title'] = _MI_IMTAGGING_CATEGORIES;
-$adminmenu[$i]['link'] = "admin/category.php";
+$adminmenu[] = array(
+		'title' => _MI_IMTAGGING_CATEGORIES,
+		'link' => "admin/category.php",
+);
+$adminmenu[] = array(
+		'title' => _AM_IMTAGGING_CATEGORY_LINK,
+		'link' => "admin/category_link.php",
+);
+$adminmenu[] = array(
+		'title' => _MI_IMTAGGING_TAGS,
+		'link' => "admin/tag.php",
+);
 
-$i++;
-$adminmenu[$i]['title'] = _AM_IMTAGGING_CATEGORY_LINK;
-$adminmenu[$i]['link'] = "admin/category_link.php";
+if (isset(icms::$module)) {
 
-$i++;
-$adminmenu[$i]['title'] = _MI_IMTAGGING_TAGS;
-$adminmenu[$i]['link'] = "admin/tag.php";
+	$moddir = basename(dirname(dirname(__FILE__)));
 
-global $icmsModule;
-if (isset($icmsModule)) {
-
-	$i = -1;
-
-	$i++;
-	$headermenu[$i]['title'] = _PREFERENCES;
-	$headermenu[$i]['link'] = '../../system/admin.php?fct=preferences&amp;op=showmod&amp;mod=' . $icmsModule->getVar('mid');
-
-	$i++;
-	$headermenu[$i]['title'] = _CO_ICMS_GOTOMODULE;
-	$headermenu[$i]['link'] = ICMS_URL . '/modules/imtagging/';
-
-	$i++;
-	$headermenu[$i]['title'] = _CO_ICMS_UPDATE_MODULE;
-	$headermenu[$i]['link'] = ICMS_URL . '/modules/system/admin.php?fct=modulesadmin&op=update&module=' . $icmsModule->getVar('dirname');
-
-	$i++;
-	$headermenu[$i]['title'] = _MODABOUT_ABOUT;
-	$headermenu[$i]['link'] = ICMS_URL . '/modules/imtagging/admin/about.php';
+	$headermenu[] = array(
+		'title' => _PREFERENCES,
+		'link' => '../../system/admin.php?fct=preferences&amp;op=showmod&amp;mod=' . icms::$module->getVar('mid'),
+	);
+	$headermenu[] = array(
+		'title' => _CO_ICMS_GOTOMODULE,
+		'link' => ICMS_MODULES_URL . '/' . $moddir,
+	);
+	$headermenu[] = array(
+		'title' => _CO_ICMS_UPDATE_MODULE,
+		'link' => ICMS_MODULES_URL . '/system/admin.php?fct=modulesadmin&op=update&module=' . icms::$module->getVar('dirname'),
+	);
+	$headermenu[] = array(
+		'title' => _MODABOUT_ABOUT,
+		'link' => ICMS_MODULES_URL . '/' . $moddir . '/admin/about.php',
+	);
 }
-?>

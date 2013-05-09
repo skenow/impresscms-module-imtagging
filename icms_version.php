@@ -8,7 +8,7 @@
 * @license		http://www.gnu.org/licenses/old-licenses/gpl-2.0.html GNU General Public License (GPL)
 * @since		1.0
 * @author		marcan aka Marc-André Lanciault <marcan@smartfactory.ca>
-* @package imtagging
+* @package 		imtagging
 * @version		$Id$
 */
 
@@ -17,14 +17,14 @@ if (!defined("ICMS_ROOT_PATH")) die("ICMS root path not defined");
 /**  General Information  */
 $modversion = array(
   'name'=> _MI_IMTAGGING_MD_NAME,
-  'version'=> 1.0,
+  'version'=> 1.1,
   'description'=> _MI_IMTAGGING_MD_DESC,
   'author'=> "The SmartFactory",
   'credits'=> "INBOX International inc.",
   'help'=> "",
   'license'=> "GNU General Public License (GPL)",
   'official'=> 0,
-  'dirname'=> basename( dirname( __FILE__ ) ),
+  'dirname'=> basename(dirname(__FILE__)),
 
 /**  Images information  */
   'iconsmall'=> "images/icon_small.png",
@@ -32,9 +32,9 @@ $modversion = array(
   'image'=> "images/icon_big.png", /* for backward compatibility */
 
 /**  Development information */
-  'status_version'=> "Beta 1",
-  'status'=> "Beta",
-  'date'=> "unreleased",
+  'status_version'=> "RC",
+  'status'=> "RC",
+  'date'=> "10 May 2013",
   'author_word'=> "",
 
 /** Contributors */
@@ -133,7 +133,7 @@ $modversion['templates'][] = array(
 /** Preferences information */
 
 // Retrieve the group user list, because the automatic group_multi config formtype does not include Anonymous group :-(
-$member_handler =& xoops_getHandler('member');
+$member_handler =& icms::handler('icms_member');
 $groups_array = $member_handler->getGroupList();
 foreach($groups_array as $k=>$v) {
 	$select_groups_options[$v] = $k;
@@ -190,5 +190,3 @@ $modversion['notification']['event'][1] = array(
   'description'=> _MI_IMTAGGING_GLOBAL_TAG_PUBLISHED_NOTIFY_DSC,
   'mail_template'=> 'global_tag_published',
   'mail_subject'=> _MI_IMTAGGING_GLOBAL_TAG_PUBLISHED_NOTIFY_SBJ);
-
-?>

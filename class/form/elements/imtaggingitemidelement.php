@@ -11,13 +11,12 @@
 
 if (!defined("ICMS_ROOT_PATH")) die("ICMS root path not defined");
 
-class ImtaggingItemidElement extends XoopsFormSelect {
-    function ImtaggingItemidElement($object, $key) {
-    	$icms_persistable_registry = IcmsPersistableRegistry::getInstance();
+class ImtaggingItemidElement extends icms_form_elements_Select {
+    function __construct($object, $key) {
+    	$icms_persistable_registry = icms_ipf_registry_Handler::getInstance();
     	$icms_module = $object->getCategory_linkModule();
-		$this->XoopsFormSelect( $object->vars[$key]['form_caption'], $key, $object->getVar($key, 'e') );
-		$optionArray = $icms_persistable_registry->getList($object->getVar('category_link_item'), $icms_module->dirname());
+		parent::__construct($object->vars[$key]['form_caption'], $key, $object->getVar($key, 'e'));
+		$optionArray = $icms_persistable_registry->getList($object->getVar('category_link_item'), $icms_module->getVar("dirname"));
         $this->addOptionArray(array(0=>_CO_IMTAGGING_CATEGORY_LINK_IID_SELECT) +$optionArray);
     }
 }
-?>

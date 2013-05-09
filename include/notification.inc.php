@@ -30,5 +30,3 @@ function imtagging_notify_iteminfo($category, $item_id){
     }
 
 }
-
-?>

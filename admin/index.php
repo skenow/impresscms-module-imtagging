@@ -13,4 +13,3 @@
 
 header('location: category.php');
 exit;
-?>

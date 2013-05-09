@@ -12,15 +12,15 @@
 if (!defined("ICMS_ROOT_PATH")) die("ICMS root path not defined");
 
 if(!defined("IMTAGGING_DIRNAME"))		define("IMTAGGING_DIRNAME", $modversion['dirname'] = basename(dirname(dirname(__FILE__))));
-if(!defined("IMTAGGING_URL"))			define("IMTAGGING_URL", ICMS_URL.'/modules/'.IMTAGGING_DIRNAME.'/');
-if(!defined("IMTAGGING_ROOT_PATH"))	define("IMTAGGING_ROOT_PATH", ICMS_ROOT_PATH.'/modules/'.IMTAGGING_DIRNAME.'/');
-if(!defined("IMTAGGING_IMAGES_URL"))	define("IMTAGGING_IMAGES_URL", IMTAGGING_URL.'images/');
-if(!defined("IMTAGGING_ADMIN_URL"))	define("IMTAGGING_ADMIN_URL", IMTAGGING_URL.'admin/');
+if(!defined("IMTAGGING_URL"))			define("IMTAGGING_URL", ICMS_MODULES_URL .'/' . IMTAGGING_DIRNAME . '/');
+if(!defined("IMTAGGING_ROOT_PATH"))	define("IMTAGGING_ROOT_PATH", ICMS_MODULES_PATH . '/' . IMTAGGING_DIRNAME . '/');
+if(!defined("IMTAGGING_IMAGES_URL"))	define("IMTAGGING_IMAGES_URL", IMTAGGING_URL . 'images/');
+if(!defined("IMTAGGING_ADMIN_URL"))	define("IMTAGGING_ADMIN_URL", IMTAGGING_URL . 'admin/');
 
 // Include the common language file of the module
 icms_loadLanguageFile('imtagging', 'common');
 
-include_once(IMTAGGING_ROOT_PATH . "include/functions.php");
+include_once IMTAGGING_ROOT_PATH . "include/functions.php";
 
 // Creating the module object to make it available throughout the module
 $imtaggingModule = icms_getModuleInfo(IMTAGGING_DIRNAME);
@@ -35,10 +35,8 @@ $imtagging_isAdmin = icms_userIsAdmin(IMTAGGING_DIRNAME);
 $imtaggingConfig = icms_getModuleConfig(IMTAGGING_DIRNAME);
 
 // including the tag class
-include_once(IMTAGGING_ROOT_PATH . 'class/tag.php');
+include_once IMTAGGING_ROOT_PATH . 'class/tag.php';
 
 // creating the icmsPersistableRegistry to make it available throughout the module
 global $icmsPersistableRegistry;
-$icmsPersistableRegistry = IcmsPersistableRegistry::getInstance();
-
-?>
+$icmsPersistableRegistry = icms_ipf_registry_Handler::getInstance();
