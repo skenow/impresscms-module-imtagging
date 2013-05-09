@@ -193,7 +193,7 @@ class ImtaggingCategory_linkHandler extends icms_ipf_Handler {
 		 * @todo: add $moduleObj as a static var
 		 */
 		$moduleObj = icms_getModuleInfo($obj->handler->_moduleName);
-    	$mid = $moduleObj->mid();
+    	$mid = $moduleObj->getVar("mid");
 
 		$criteria = new icms_db_criteria_Compo();
 		$criteria->add(new icms_db_criteria_Item('category_link_mid', $mid));
