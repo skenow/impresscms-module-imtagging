@@ -17,7 +17,7 @@ if (!defined("ICMS_ROOT_PATH")) die("ICMS root path not defined");
 /**  General Information  */
 $modversion = array(
   'name'=> _MI_IMTAGGING_MD_NAME,
-  'version'=> 1.1,
+  'version'=> '1.1.1',
   'description'=> _MI_IMTAGGING_MD_DESC,
   'author'=> "The SmartFactory",
   'credits'=> "INBOX International inc.",
