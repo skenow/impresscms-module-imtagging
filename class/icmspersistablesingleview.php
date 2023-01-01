@@ -1,15 +1,15 @@
 <?php
 
 /**
- * Contains the basis classes for displaying a single IcmsPersistableObject
- *
- * @copyright The ImpressCMS Project http://www.impresscms.org/
- * @license http://www.gnu.org/licenses/old-licenses/gpl-2.0.html GNU General Public License (GPL)
- * @package IcmsPersistableObject
- * @since 1.1
- * @author marcan <marcan@impresscms.org>
- * @version $Id: icmspersistableobject.php 5474 2008-10-07 19:00:07Z m0nty_ $
- */
+* Contains the basis classes for displaying a single IcmsPersistableObject
+*
+* @copyright	The ImpressCMS Project http://www.impresscms.org/
+* @license		http://www.gnu.org/licenses/old-licenses/gpl-2.0.html GNU General Public License (GPL)
+* @package		IcmsPersistableObject
+* @since		1.1
+* @author		marcan <marcan@impresscms.org>
+* @version		$Id: icmspersistableobject.php 5474 2008-10-07 19:00:07Z m0nty_ $
+*/
 
 /**
  * IcmsPersistableRow class
@@ -21,13 +21,14 @@
  * @link http://smartfactory.ca The SmartFactory
  */
 class IcmsPersistableRow {
+
 	var $_keyname;
 	var $_align;
 	var $_customMethodForValue;
 	var $_header;
 	var $_class;
 
-	function IcmsPersistableRow($keyname, $customMethodForValue = false, $header = false, $class = false) {
+	function __construct($keyname, $customMethodForValue=false, $header=false, $class=false) {
 		$this->_keyname = $keyname;
 		$this->_customMethodForValue = $customMethodForValue;
 		$this->_header = $header;
@@ -53,17 +54,19 @@ class IcmsPersistableRow {
  * @link http://smartfactory.ca The SmartFactory
  */
 class IcmsPersistableSingleView {
+
 	var $_object;
 	var $_userSide;
 	var $_tpl;
 	var $_rows;
 	var $_actions;
-	var $_headerAsRow = true;
+	var $_headerAsRow=true;
 
 	/**
-	 * Constructor
-	 */
-	function IcmsPersistableSingleView(&$object, $userSide = false, $actions = array(), $headerAsRow = true) {
+    * Constructor
+    */
+	function IcmsPersistableSingleView(&$object, $userSide=false, $actions=array(), $headerAsRow=true)
+	{
 		$this->_object = $object;
 		$this->_userSide = $userSide;
 		$this->_actions = $actions;
@@ -74,7 +77,8 @@ class IcmsPersistableSingleView {
 		$this->_rows[] = $rowObj;
 	}
 
-	function render($fetchOnly = false, $debug = false) {
+	function render($fetchOnly=false, $debug=false)
+	{
 		include_once ICMS_ROOT_PATH . '/class/template.php';
 
 		$this->_tpl =& new XoopsTpl();
@@ -114,17 +118,16 @@ class IcmsPersistableSingleView {
 		$this->_tpl->assign('icms_object_array', $icms_object_array);
 
 		/**
-		 *
 		 * @todo when ICMS 1.2 is out, change this for system_persistable_singleview.html
 		 */
 		if ($fetchOnly) {
-			return $this->_tpl->fetch('db:imtagging_persistable_singleview.html');
+			return $this->_tpl->fetch( 'db:imtagging_persistable_singleview.html' );
 		} else {
-			$this->_tpl->display('db:imtagging_persistable_singleview.html');
+			$this->_tpl->display( 'db:imtagging_persistable_singleview.html' );
 		}
 	}
 
-	function fetch($debug = false) {
+	function fetch($debug=false) {
 		return $this->render(true, $debug);
 	}
 }
