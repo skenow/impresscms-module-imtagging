@@ -11,4 +11,4 @@
 */
 
 include_once "../../mainfile.php";
-include_once dirname(__FILE__) . '/include/common.php';
+include_once __DIR__ . '/include/common.php';

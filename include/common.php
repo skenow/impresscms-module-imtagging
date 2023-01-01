@@ -10,7 +10,7 @@
  */
 if (!defined("ICMS_ROOT_PATH")) die("ICMS root path not defined");
 
-if (!defined("IMTAGGING_DIRNAME")) define("IMTAGGING_DIRNAME", $modversion['dirname'] = basename(dirname(dirname(__FILE__))));
+if (!defined("IMTAGGING_DIRNAME")) define("IMTAGGING_DIRNAME", $modversion['dirname'] = basename(dirname(__DIR__)));
 if (!defined("IMTAGGING_URL")) define("IMTAGGING_URL", ICMS_MODULES_URL . '/' . IMTAGGING_DIRNAME . '/');
 if (!defined("IMTAGGING_ROOT_PATH")) define("IMTAGGING_ROOT_PATH", ICMS_MODULES_PATH . '/' . IMTAGGING_DIRNAME . '/');
 if (!defined("IMTAGGING_IMAGES_URL")) define("IMTAGGING_IMAGES_URL", IMTAGGING_URL . 'images/');

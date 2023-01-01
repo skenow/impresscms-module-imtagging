@@ -13,7 +13,7 @@
  */
 include_once '../../../include/cp_header.php';
 
-include_once ICMS_MODULES_PATH . '/' . basename(dirname(dirname(__FILE__))) . '/include/common.php';
+include_once ICMS_MODULES_PATH . '/' . basename(dirname(__DIR__)) . '/include/common.php';
 if (!defined("IMTAGGING_ADMIN_URL")) define('IMTAGGING_ADMIN_URL', IMTAGGING_URL . "admin/");
 include_once (IMTAGGING_ROOT_PATH . 'include/requirements.php');
 /**
