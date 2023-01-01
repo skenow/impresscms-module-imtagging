@@ -7,7 +7,7 @@
 * @since		1.0
 * @author		Kazumi Ono 	<onokazu@xoops.org>
 * @author		marcan aka Marc-André Lanciault <marcan@smartfactory.ca>
-* @version		$Id$
+* 
 */
 
 if (!defined("ICMS_ROOT_PATH")) die("ICMS root path not defined");
@@ -195,7 +195,6 @@ class IcmsPersistableTree {
         $this->_makeSelBoxOptions($fieldName, $selected, $key, $ret, $prefix);
         return $ret.'</select>';
     }
-
-
+    
+    
 }
-?>

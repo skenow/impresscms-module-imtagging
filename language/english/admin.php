@@ -1,14 +1,13 @@
 <?php
 /**
-* English language constants used in admin section of the module
-*
-* @copyright	http://smartfactory.ca The SmartFactory
-* @license		http://www.gnu.org/licenses/old-licenses/gpl-2.0.html GNU General Public License (GPL)
-* @since		1.0
-* @author		marcan aka Marc-André Lanciault <marcan@smartfactory.ca>
-* @version		$Id$
-*/
-
+ * English language constants used in admin section of the module
+ *
+ * @copyright http://smartfactory.ca The SmartFactory
+ * @license http://www.gnu.org/licenses/old-licenses/gpl-2.0.html GNU General Public License (GPL)
+ * @since 1.0
+ * @author marcan aka Marc-André Lanciault <marcan@smartfactory.ca>
+ * 
+ */
 if (!defined("ICMS_ROOT_PATH")) die("ICMS root path not defined");
 
 // Requirements
@@ -57,4 +56,3 @@ define("_AM_IMTAGGING_TAG_MODIFIED", "The tag was successfully modified.");
 define("_AM_IMTAGGING_TAG_CREATED", "The tag has been successfully created.");
 define("_AM_IMTAGGING_TAG_VIEW", "Tag info");
 define("_AM_IMTAGGING_TAG_VIEW_DSC", "Here is the info about this tag.");
-?>

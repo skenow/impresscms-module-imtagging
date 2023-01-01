@@ -1,15 +1,14 @@
 <?php
 /**
-* Persian language constants commonly used in the module
-*
-* @copyright	http://smartfactory.ca The SmartFactory
-* @copyright	http://www.impresscms.ir Official ImpressCMS support site for Persians
-* @license		http://www.gnu.org/licenses/old-licenses/gpl-2.0.html GNU General Public License (GPL)
-* @since		1.0
-* @author	    Sina Asghari (aka stranger) <pesian_stranger@users.sourceforge.net>
-* @version		$Id$
-*/
-
+ * Persian language constants commonly used in the module
+ *
+ * @copyright http://smartfactory.ca The SmartFactory
+ * @copyright http://www.impresscms.ir Official ImpressCMS support site for Persians
+ * @license http://www.gnu.org/licenses/old-licenses/gpl-2.0.html GNU General Public License (GPL)
+ * @since 1.0
+ * @author Sina Asghari (aka stranger) <pesian_stranger@users.sourceforge.net>
+ * 
+ */
 if (!defined("ICMS_ROOT_PATH")) die("ICMS root path not defined");
 
 // category
@@ -23,7 +22,6 @@ define("_CO_IMTAGGING_CATEGORY_CATEGORY_PID", "شاخه‌ی اصلی");
 define("_CO_IMTAGGING_CATEGORY_CATEGORY_PID_DSC", "");
 
 define("_CO_IMTAGGING_CATEGORY_ADD", "+ شاخه‌ی جدید اضافه کنید");
-
 
 // category link
 define("_CO_IMTAGGING_CATEGORY_LINK_CATEGORY_LINK_CID", "شاخه");
@@ -48,4 +46,3 @@ define("_CO_IMTAGGING_TAG_TAG_CREATED_DATE_DSC", "");
 define("_CO_IMTAGGING_TAG_TAG_UID", "سازنده");
 define("_CO_IMTAGGING_TAG_TAG_UID_DSC", "");
 
-?>

@@ -1,15 +1,14 @@
 <?php
 /**
-* Persian language constants related to module information
-*
-* @copyright	http://smartfactory.ca The SmartFactory
-* @copyright	http://www.impresscms.ir Official ImpressCMS support site for Persians
-* @license		http://www.gnu.org/licenses/old-licenses/gpl-2.0.html GNU General Public License (GPL)
-* @since		1.0
-* @author	    Sina Asghari (aka stranger) <pesian_stranger@users.sourceforge.net>
-* @version		$Id$
-*/
-
+ * Persian language constants related to module information
+ *
+ * @copyright http://smartfactory.ca The SmartFactory
+ * @copyright http://www.impresscms.ir Official ImpressCMS support site for Persians
+ * @license http://www.gnu.org/licenses/old-licenses/gpl-2.0.html GNU General Public License (GPL)
+ * @since 1.0
+ * @author Sina Asghari (aka stranger) <pesian_stranger@users.sourceforge.net>
+ * 
+ */
 if (!defined("ICMS_ROOT_PATH")) die("ICMS root path not defined");
 
 // Module Info
@@ -41,5 +40,6 @@ define("_MI_IMTAGGING_GLOBAL_TAG_PUBLISHED_NOTIFY", "برچسب جدیدی من�
 define("_MI_IMTAGGING_GLOBAL_TAG_PUBLISHED_NOTIFY_CAP", "هروقت برچسب جدیدی منتشر شد مرا باخبر ساز");
 define("_MI_IMTAGGING_GLOBAL_TAG_PUBLISHED_NOTIFY_DSC", "دریافت آگاهسازی از آخرین برچسب‌های منتشر شده.");
 define("_MI_IMTAGGING_GLOBAL_TAG_PUBLISHED_NOTIFY_SBJ", "[{X_SITENAME}] {X_MODULE} آگاهسازی خودکار : برچسب تازه‌ای منتشر شد");
-if (!defined("_AM_IMTAGGING_CATEGORY_LINK")){define("_AM_IMTAGGING_CATEGORY_LINK", "شاخه‌های لینک شده");}
-?>
+if (!defined("_AM_IMTAGGING_CATEGORY_LINK")) {
+	define("_AM_IMTAGGING_CATEGORY_LINK", "شاخه‌های لینک شده");
+}

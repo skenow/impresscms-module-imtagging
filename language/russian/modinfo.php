@@ -1,14 +1,13 @@
 <?php
 /**
-* Russian language constants related to module information
-*
-* @copyright	http://smartfactory.ca The SmartFactory
-* @license		http://www.gnu.org/licenses/old-licenses/gp<a href="/modules/imtagging/language/russian/modinfo.php">modinfo.php</a>l-2.0.html GNU General Public License (GPL)
-* @since		1.0
-* @author		marcan aka Marc-André Lanciault <marcan@smartfactory.ca>
-* @version		$Id$ Russian translation. Charset: utf-8 (without BOM)
-*/
-
+ * Russian language constants related to module information
+ *
+ * @copyright http://smartfactory.ca The SmartFactory
+ * @license http://www.gnu.org/licenses/old-licenses/gp<a href="/modules/imtagging/language/russian/modinfo.php">modinfo.php</a>l-2.0.html GNU General Public License (GPL)
+ * @since 1.0
+ * @author marcan aka Marc-André Lanciault <marcan@smartfactory.ca>
+ *  Russian translation. Charset: utf-8 (without BOM)
+ */
 if (!defined("ICMS_ROOT_PATH")) die("Не определен корневой путь к ICMS");
 
 // Module Info
@@ -40,5 +39,6 @@ define("_MI_IMTAGGING_GLOBAL_TAG_PUBLISHED_NOTIFY", "Опубликован но
 define("_MI_IMTAGGING_GLOBAL_TAG_PUBLISHED_NOTIFY_CAP", "Известить меня, когда будет опубликован новый тэг");
 define("_MI_IMTAGGING_GLOBAL_TAG_PUBLISHED_NOTIFY_DSC", "Получить оповещение, когда будет опубликован любой новый тэг.");
 define("_MI_IMTAGGING_GLOBAL_TAG_PUBLISHED_NOTIFY_SBJ", "[{X_SITENAME}] {X_MODULE} автооповещение : Опубликован новый тэг");
-if (!defined("_AM_IMTAGGING_CATEGORY_LINK")){define("_AM_IMTAGGING_CATEGORY_LINK", "Ссылка категории");}
-?>
+if (!defined("_AM_IMTAGGING_CATEGORY_LINK")) {
+	define("_AM_IMTAGGING_CATEGORY_LINK", "Ссылка категории");
+}

@@ -1,37 +1,36 @@
 <?php
+
 /**
-* Admin page to manage categories
-*
-* List, add, edit and delete category objects
-*
-* @copyright	http://smartfactory.ca The SmartFactory
-* @license		http://www.gnu.org/licenses/old-licenses/gpl-2.0.html GNU General Public License (GPL)
-* @since		1.0
-* @author		marcan aka Marc-André Lanciault <marcan@smartfactory.ca>
-* @version		$Id$
-*/
+ * Admin page to manage categories
+ *
+ * List, add, edit and delete category objects
+ *
+ * @copyright http://smartfactory.ca The SmartFactory
+ * @license http://www.gnu.org/licenses/old-licenses/gpl-2.0.html GNU General Public License (GPL)
+ * @since 1.0
+ * @author marcan aka Marc-André Lanciault <marcan@smartfactory.ca>
+ * 
+ */
 
 /**
  * Edit a Category
  *
  * @param int $category_id Categoryid to be edited
-*/
+ */
 function editcategory($category_id = 0) {
 	global $imtagging_category_handler, $icmsAdminTpl;
 
 	$categoryObj = $imtagging_category_handler->get($category_id);
 
-	if (!$categoryObj->isNew()){
+	if (!$categoryObj->isNew()) {
 
 		icms::$module->displayAdminMenu(0, _AM_IMTAGGING_CATEGORIES . " > " . _CO_ICMS_EDITING);
 		$sform = $categoryObj->getForm(_AM_IMTAGGING_CATEGORY_EDIT, 'addcategory');
 		$sform->assign($icmsAdminTpl);
-
 	} else {
 		icms::$module->displayAdminMenu(0, _AM_IMTAGGING_CATEGORIES . " > " . _CO_ICMS_CREATINGNEW);
 		$sform = $categoryObj->getForm(_AM_IMTAGGING_CATEGORY_CREATE, 'addcategory');
 		$sform->assign($icmsAdminTpl);
-
 	}
 	$icmsAdminTpl->display('db:imtagging_admin_category.html');
 }
@@ -39,89 +38,103 @@ function editcategory($category_id = 0) {
 include_once "admin_header.php";
 
 $imtagging_category_handler = icms_getModulehandler('category');
-/** Use a naming convention that indicates the source of the content of the variable */
+/**
+ * Use a naming convention that indicates the source of the content of the variable
+ */
 $clean_op = '';
-/** Create a whitelist of valid values, be sure to use appropriate types for each value
+/**
+ * Create a whitelist of valid values, be sure to use appropriate types for each value
  * Be sure to include a value for no parameter, if you have a default condition
  */
-$valid_op = array ('mod','changedField','addcategory','del','view','');
+$valid_op = array(
+	'mod',
+	'changedField',
+	'addcategory',
+	'del',
+	'view',
+	'');
 
 if (isset($_GET['op'])) $clean_op = htmlentities($_GET['op']);
 if (isset($_POST['op'])) $clean_op = htmlentities($_POST['op']);
 
-/** Again, use a naming convention that indicates the source of the content of the variable */
-$clean_category_id = isset($_GET['category_id']) ? (int) $_GET['category_id'] : 0 ;
+/**
+ * Again, use a naming convention that indicates the source of the content of the variable
+ */
+$clean_category_id = isset($_GET['category_id']) ? (int) $_GET['category_id'] : 0;
 
 /**
  * in_array() is a native PHP function that will determine if the value of the
- * first argument is found in the array listed in the second argument. Strings
+ * first argument is found in the array listed in the second argument.
+ * Strings
  * are case sensitive and the 3rd argument determines whether type matching is
  * required
-*/
-if (in_array($clean_op,$valid_op,true)){
-  switch ($clean_op) {
-  	case "mod":
-  	case "changedField":
+ */
+if (in_array($clean_op, $valid_op, true)) {
+	switch ($clean_op) {
+		case "mod":
+		case "changedField":
 
-  		icms_cp_header();
+			icms_cp_header();
 
-  		editcategory($clean_category_id);
-  		break;
-  	case "addcategory":
-        $controller = new icms_ipf_Controller($imtagging_category_handler);
-  		$controller->storeFromDefaultForm(_AM_IMTAGGING_CATEGORY_CREATED, _AM_IMTAGGING_CATEGORY_MODIFIED);
+			editcategory($clean_category_id);
+			break;
+		case "addcategory":
+			$controller = new icms_ipf_Controller($imtagging_category_handler);
+			$controller->storeFromDefaultForm(_AM_IMTAGGING_CATEGORY_CREATED, _AM_IMTAGGING_CATEGORY_MODIFIED);
 
-  		break;
+			break;
 
-  	case "del":
-        $controller = new icms_ipf_Controller($imtagging_category_handler);
-  		$controller->handleObjectDeletion();
+		case "del":
+			$controller = new icms_ipf_Controller($imtagging_category_handler);
+			$controller->handleObjectDeletion();
 
-  		break;
+			break;
 
-  	case "view" :
+		case "view":
 
-  		$imtagging_category_link_handler = icms_getModulehandler('category_link');
+			$imtagging_category_link_handler = icms_getModulehandler('category_link');
 
-  		$categoryObj = $imtagging_category_handler->get($clean_category_id);
+			$categoryObj = $imtagging_category_handler->get($clean_category_id);
 
-  		icms_cp_header();
-		icms::$module->displayAdminMenu(0, _AM_IMTAGGING_CATEGORY_VIEW . ' > ' . $categoryObj->getVar('category_title'));
+			icms_cp_header();
+			icms::$module->displayAdminMenu(0, _AM_IMTAGGING_CATEGORY_VIEW . ' > ' . $categoryObj->getVar('category_title'));
 
-  		$icmsAdminTpl->assign('imtagging_category_singleobject', $categoryObj->displaySingleObject());
+			$icmsAdminTpl->assign('imtagging_category_singleobject', $categoryObj->displaySingleObject());
 
-  		$criteria = new icms_db_criteria_Compo();
-  		$criteria->add(new icms_db_criteria_Item('category_link_cid', $clean_category_id));
+			$criteria = new icms_db_criteria_Compo();
+			$criteria->add(new icms_db_criteria_Item('category_link_cid', $clean_category_id));
 
-  		$objectTable = new icms_ipf_view_Table($imtagging_category_link_handler, $criteria);
-  		$objectTable->addColumn(new icms_ipf_view_Column('category_link_iid'));
-  		$objectTable->addColumn(new icms_ipf_view_Column('category_link_mid', _GLOBAL_LEFT, '200'));
+			$objectTable = new icms_ipf_view_Table($imtagging_category_link_handler, $criteria);
+			$objectTable->addColumn(new icms_ipf_view_Column('category_link_iid'));
+			$objectTable->addColumn(new icms_ipf_view_Column('category_link_mid', _GLOBAL_LEFT, '200'));
 
-  		$icmsAdminTpl->assign('imtagging_category_link_table', $objectTable->fetch());
+			$icmsAdminTpl->assign('imtagging_category_link_table', $objectTable->fetch());
 
-  		$icmsAdminTpl->display('db:imtagging_admin_category.html');
+			$icmsAdminTpl->display('db:imtagging_admin_category.html');
 
-  		break;
+			break;
 
-  	default:
+		default:
 
-  		icms_cp_header();
+			icms_cp_header();
 
-  		$icmsModule->displayAdminMenu(0, _AM_IMTAGGING_CATEGORIES);
+			$icmsModule->displayAdminMenu(0, _AM_IMTAGGING_CATEGORIES);
 
-  		$objectTable = new icms_ipf_view_Table($imtagging_category_handler);
-  		$objectTable->addColumn(new icms_ipf_view_Column('category_title', _GLOBAL_LEFT, '200', 'getAdminViewItemLink'));
-  		$objectTable->addColumn(new icms_ipf_view_Column('category_description'));
+			$objectTable = new icms_ipf_view_Table($imtagging_category_handler);
+			$objectTable->addColumn(new icms_ipf_view_Column('category_title', _GLOBAL_LEFT, '200', 'getAdminViewItemLink'));
+			$objectTable->addColumn(new icms_ipf_view_Column('category_description'));
 
-  		$objectTable->addIntroButton('addcategory', 'category.php?op=mod', _AM_IMTAGGING_CATEGORY_CREATE);
-  		$objectTable->addQuickSearch(array('category_title', 'category_description'));
+			$objectTable->addIntroButton('addcategory', 'category.php?op=mod', _AM_IMTAGGING_CATEGORY_CREATE);
+			$objectTable->addQuickSearch(array(
+				'category_title',
+				'category_description'));
 
-  		$icmsAdminTpl->assign('imtagging_category_table', $objectTable->fetch());
+			$icmsAdminTpl->assign('imtagging_category_table', $objectTable->fetch());
 
-  		$icmsAdminTpl->display('db:imtagging_admin_category.html');
-  		break;
-  }
-  icms_cp_footer();
+			$icmsAdminTpl->display('db:imtagging_admin_category.html');
+			break;
+	}
+	icms_cp_footer();
 }
 
 /**

@@ -1,14 +1,13 @@
 <?php
 /**
-* English language constants related to module information
-*
-* @copyright	http://smartfactory.ca The SmartFactory
-* @license		http://www.gnu.org/licenses/old-licenses/gpl-2.0.html GNU General Public License (GPL)
-* @since		1.0
-* @author		marcan aka Marc-André Lanciault <marcan@smartfactory.ca>
-* @version		$Id$
-*/
-
+ * English language constants related to module information
+ *
+ * @copyright http://smartfactory.ca The SmartFactory
+ * @license http://www.gnu.org/licenses/old-licenses/gpl-2.0.html GNU General Public License (GPL)
+ * @since 1.0
+ * @author marcan aka Marc-André Lanciault <marcan@smartfactory.ca>
+ * 
+ */
 if (!defined("ICMS_ROOT_PATH")) die("ICMS root path not defined");
 
 // Module Info
@@ -40,5 +39,6 @@ define("_MI_IMTAGGING_GLOBAL_TAG_PUBLISHED_NOTIFY", "Neuer Tag veröffentlicht")
 define("_MI_IMTAGGING_GLOBAL_TAG_PUBLISHED_NOTIFY_CAP", "Mich benachrichtigen, wenn win neuer Tag veröffentlicht wurde");
 define("_MI_IMTAGGING_GLOBAL_TAG_PUBLISHED_NOTIFY_DSC", "Sende eine Benachrichtigung, sobald ein neuer Tag veröffentlicht wurde.");
 define("_MI_IMTAGGING_GLOBAL_TAG_PUBLISHED_NOTIFY_SBJ", "[{X_SITENAME}] {X_MODULE} auto-notify : Neuer Tag veröffentlicht");
-if (!defined("_AM_IMTAGGING_CATEGORY_LINK")){define("_AM_IMTAGGING_CATEGORY_LINK", "Kategorie-Link");}
-?>
+if (!defined("_AM_IMTAGGING_CATEGORY_LINK")) {
+	define("_AM_IMTAGGING_CATEGORY_LINK", "Kategorie-Link");
+}

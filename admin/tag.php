@@ -1,14 +1,15 @@
 <?php
+
 /**
  * Admin page to manage tags
  *
  * List, add, edit and delete tag objects
  *
- * @copyright	http://smartfactory.ca The SmartFactory
- * @license		http://www.gnu.org/licenses/old-licenses/gpl-2.0.html GNU General Public License (GPL)
- * @since		1.0
- * @author		marcan aka Marc-André Lanciault <marcan@smartfactory.ca>
- * @version		$Id$
+ * @copyright http://smartfactory.ca The SmartFactory
+ * @license http://www.gnu.org/licenses/old-licenses/gpl-2.0.html GNU General Public License (GPL)
+ * @since 1.0
+ * @author marcan aka Marc-André Lanciault <marcan@smartfactory.ca>
+ * 
  */
 
 /**
@@ -21,17 +22,15 @@ function edittag($tag_id = 0) {
 
 	$tagObj = $imtagging_tag_handler->get($tag_id);
 
-	if (!$tagObj->isNew()){
+	if (!$tagObj->isNew()) {
 		icms::$module->displayAdminMenu(1, _AM_IMTAGGING_TAGS . " > " . _CO_ICMS_EDITING);
 		$sform = $tagObj->getForm(_AM_IMTAGGING_TAG_EDIT, 'addtag');
 		$sform->assign($icmsAdminTpl);
-
 	} else {
 		$tagObj->setVar('tag_uid', $icmsUser->uid());
 		icms::$module->displayAdminMenu(1, _AM_IMTAGGING_TAGS . " > " . _CO_ICMS_CREATINGNEW);
 		$sform = $tagObj->getForm(_AM_IMTAGGING_TAG_CREATE, 'addtag');
 		$sform->assign($icmsAdminTpl);
-
 	}
 	$icmsAdminTpl->display('db:imtagging_admin_tag.html');
 }
@@ -39,26 +38,38 @@ function edittag($tag_id = 0) {
 include_once "admin_header.php";
 
 $imtagging_tag_handler = icms_getModulehandler('tag');
-/** Use a naming convention that indicates the source of the content of the variable */
+/**
+ * Use a naming convention that indicates the source of the content of the variable
+ */
 $clean_op = '';
-/** Create a whitelist of valid values, be sure to use appropriate types for each value
+/**
+ * Create a whitelist of valid values, be sure to use appropriate types for each value
  * Be sure to include a value for no parameter, if you have a default condition
  */
-$valid_op = array ('mod','changedField','addtag','del','view','');
+$valid_op = array(
+	'mod',
+	'changedField',
+	'addtag',
+	'del',
+	'view',
+	'');
 
 if (isset($_GET['op'])) $clean_op = htmlentities($_GET['op']);
 if (isset($_POST['op'])) $clean_op = htmlentities($_POST['op']);
 
-/** Again, use a naming convention that indicates the source of the content of the variable */
-$clean_tag_id = isset($_GET['tag_id']) ? (int) $_GET['tag_id'] : 0 ;
+/**
+ * Again, use a naming convention that indicates the source of the content of the variable
+ */
+$clean_tag_id = isset($_GET['tag_id']) ? (int) $_GET['tag_id'] : 0;
 
 /**
  * in_array() is a native PHP function that will determine if the value of the
- * first argument is found in the array listed in the second argument. Strings
+ * first argument is found in the array listed in the second argument.
+ * Strings
  * are case sensitive and the 3rd argument determines whether type matching is
  * required
  */
-if (in_array($clean_op,$valid_op,true)){
+if (in_array($clean_op, $valid_op, true)) {
 	switch ($clean_op) {
 		case "mod":
 		case "changedField":
@@ -79,7 +90,7 @@ if (in_array($clean_op,$valid_op,true)){
 
 			break;
 
-		case "view" :
+		case "view":
 			$tagObj = $imtagging_tag_handler->get($clean_tag_id);
 
 			icms_cp_header();
@@ -121,7 +132,9 @@ if (in_array($clean_op,$valid_op,true)){
 			$objectTable->addColumn(new icms_ipf_view_Column('tag_uid', 'center', 150));
 
 			$objectTable->addIntroButton('addtag', 'tag.php?op=mod', _AM_IMTAGGING_TAG_CREATE);
-			$objectTable->addQuickSearch(array('tag_title', 'tag_description'));
+			$objectTable->addQuickSearch(array(
+				'tag_title',
+				'tag_description'));
 
 			$icmsAdminTpl->assign('imtagging_tag_table', $objectTable->fetch());
 
