@@ -7,7 +7,7 @@
  * @since 1.0
  * @author marcan aka Marc-André Lanciault <marcan@smartfactory.ca>
  * @translator	debianus
- * @version $Id$
+ * 
  */
 if (!defined("ICMS_ROOT_PATH")) die("ICMS root path not defined");
 
@@ -57,4 +57,3 @@ define("_AM_IMTAGGING_TAG_MODIFIED", "La categoría fue modificada con éxito.")
 define("_AM_IMTAGGING_TAG_CREATED", "La categoría fue creada con éxito.");
 define("_AM_IMTAGGING_TAG_VIEW", "Información");
 define("_AM_IMTAGGING_TAG_VIEW_DSC", ".");
-?>

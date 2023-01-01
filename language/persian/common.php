@@ -7,7 +7,7 @@
  * @license http://www.gnu.org/licenses/old-licenses/gpl-2.0.html GNU General Public License (GPL)
  * @since 1.0
  * @author Sina Asghari (aka stranger) <pesian_stranger@users.sourceforge.net>
- * @version $Id$
+ * 
  */
 if (!defined("ICMS_ROOT_PATH")) die("ICMS root path not defined");
 
@@ -46,4 +46,3 @@ define("_CO_IMTAGGING_TAG_TAG_CREATED_DATE_DSC", "");
 define("_CO_IMTAGGING_TAG_TAG_UID", "سازنده");
 define("_CO_IMTAGGING_TAG_TAG_UID_DSC", "");
 
-?>

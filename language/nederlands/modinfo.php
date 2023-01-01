@@ -7,7 +7,7 @@
  * @since 1.0
  * @author marcan aka Marc-André Lanciault <marcan@smartfactory.ca> (english)
  * @author McDonald (translation into dutch)
- * @version $Id$
+ * 
  */
 if (!defined('ICMS_ROOT_PATH')) die('ICMS root path not defined');
 
@@ -40,4 +40,3 @@ define('_MI_IMTAGGING_GLOBAL_TAG_PUBLISHED_NOTIFY', 'Nieuwe tag gepubliceerd');
 define('_MI_IMTAGGING_GLOBAL_TAG_PUBLISHED_NOTIFY_CAP', 'Stuur me bericht als een nieuwe tag is gepubliceerd');
 define('_MI_IMTAGGING_GLOBAL_TAG_PUBLISHED_NOTIFY_DSC', 'Ontvang bericht wanneer een nieuwe tag is gepubliceerd.');
 define('_MI_IMTAGGING_GLOBAL_TAG_PUBLISHED_NOTIFY_SBJ', '[{X_SITENAME}] {X_MODULE} auto-berichtgeving: Nieuwe tag gepubliceerd');
-?>

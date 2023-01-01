@@ -7,9 +7,8 @@
  * @since 1.0
  * @author marcan aka Marc-André Lanciault <marcan@smartfactory.ca>
  * @translator	debianus
- * @version $Id$
+ * 
  */
 if (!defined("ICMS_ROOT_PATH")) die("ICMS root path not defined");
 
 define("_MB_IMTAGGING_TAG_RECENT_LIMIT", "Etiquetas recientes que se mostrarán: ");
-?>

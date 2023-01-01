@@ -34,4 +34,3 @@ class IcmsPreloadJquery extends IcmsPreloadItem {
 		echo $ret;
 	}
 }
-?>

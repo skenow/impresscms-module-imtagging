@@ -7,7 +7,7 @@
  * @since 1.0
  * @author marcan aka Marc-André Lanciault <marcan@smartfactory.ca> (english)
  * @author McDonald (translation into dutch)
- * @version $Id$
+ * 
  */
 if (!defined('ICMS_ROOT_PATH')) die('ICMS root path not defined');
 
@@ -51,4 +51,3 @@ define('_AM_IMTAGGING_TAG_MODIFIED', 'De tag is succesvol bijgewerkt.');
 define('_AM_IMTAGGING_TAG_CREATED', 'De tag is succesvol aangemaakt.');
 define('_AM_IMTAGGING_TAG_VIEW', 'Tag info');
 define('_AM_IMTAGGING_TAG_VIEW_DSC', 'Hier is de info over deze tag.');
-?>

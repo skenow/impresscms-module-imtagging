@@ -7,7 +7,7 @@
  * @since 1.0
  * @author marcan aka Marc-André Lanciault <marcan@smartfactory.ca>
  * @translator	debianus
- * @version $Id$
+ * 
  */
 if (!defined("ICMS_ROOT_PATH")) die("ICMS root path not defined");
 
@@ -43,4 +43,3 @@ define("_MI_IMTAGGING_GLOBAL_TAG_PUBLISHED_NOTIFY_SBJ", "[{X_SITENAME}] {X_MODUL
 if (!defined("_AM_IMTAGGING_CATEGORY_LINK")) {
 	define("_AM_IMTAGGING_CATEGORY_LINK", "Enlace de categoría");
 }
-?>

@@ -7,7 +7,7 @@
  * @since 1.0
  * @author marcan aka Marc-André Lanciault <marcan@smartfactory.ca>
  * @translator	debianus
- * @version $Id$
+ * 
  */
 if (!defined("ICMS_ROOT_PATH")) die("ICMS root path not defined");
 
@@ -44,4 +44,3 @@ define("_CO_IMTAGGING_TAG_TAG_CREATED_DATE", "Fecha de creación");
 define("_CO_IMTAGGING_TAG_TAG_CREATED_DATE_DSC", "");
 define("_CO_IMTAGGING_TAG_TAG_UID", "Autor");
 define("_CO_IMTAGGING_TAG_TAG_UID_DSC", "");
-?>

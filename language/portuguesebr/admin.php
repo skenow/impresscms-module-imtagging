@@ -6,7 +6,7 @@
  * @license http://www.gnu.org/licenses/old-licenses/gpl-2.0.html GNU General Public License (GPL)
  * @since 1.0
  * @author marcan aka Marc-André Lanciault <marcan@smartfactory.ca>
- * @version $Id$
+ * 
  * @translation        GibaPhp - http://br.impresscms.org
  */
 if (!defined("ICMS_ROOT_PATH")) die("O caminho para o raiz do site não foi definido");
@@ -57,4 +57,3 @@ define("_AM_IMTAGGING_TAG_MODIFIED", "A Tag/etiqueta foi modificada com sucesso.
 define("_AM_IMTAGGING_TAG_CREATED", "A Tag/etiqueta foi criada com sucesso.");
 define("_AM_IMTAGGING_TAG_VIEW", "Informação da Tag");
 define("_AM_IMTAGGING_TAG_VIEW_DSC", "Aqui está a informação sobre esta tag.");
-?>

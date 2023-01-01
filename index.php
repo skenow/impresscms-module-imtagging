@@ -7,7 +7,7 @@
  * @since 1.0
  * @author marcan aka Marc-André Lanciault <marcan@smartfactory.ca>
  * @package imtagging
- * @version $Id$
+ * 
  */
 /**
  * Include the module's header for all pages
