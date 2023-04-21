@@ -9,7 +9,7 @@
  * @license http://www.gnu.org/licenses/old-licenses/gpl-2.0.html GNU General Public License (GPL)
  * @since 1.0
  * @author marcan aka Marc-André Lanciault <marcan@smartfactory.ca>
- * 
+ *
  */
 
 /**
@@ -118,7 +118,7 @@ if (in_array($clean_op, $valid_op, true)) {
 
 			icms_cp_header();
 
-			$icmsModule->displayAdminMenu(0, _AM_IMTAGGING_CATEGORIES);
+			icms::$module->displayAdminMenu(0, _AM_IMTAGGING_CATEGORIES);
 
 			$objectTable = new icms_ipf_view_Table($imtagging_category_handler);
 			$objectTable->addColumn(new icms_ipf_view_Column('category_title', _GLOBAL_LEFT, '200', 'getAdminViewItemLink'));
