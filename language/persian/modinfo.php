@@ -7,14 +7,14 @@
  * @license http://www.gnu.org/licenses/old-licenses/gpl-2.0.html GNU General Public License (GPL)
  * @since 1.0
  * @author Sina Asghari (aka stranger) <pesian_stranger@users.sourceforge.net>
- * 
+ *
  */
 if (!defined("ICMS_ROOT_PATH")) die("ICMS root path not defined");
 
 // Module Info
 // The name of this module
 
-global $icmsModule;
+global icms::$module;
 define("_MI_IMTAGGING_MD_NAME", "برچسب‌ها");
 define("_MI_IMTAGGING_MD_DESC", "ماژولی برای مدیریت شاخه و برچسب‌ها در ایمپرس سی‌ام‌اس.");
 

@@ -7,14 +7,14 @@
  * @since 1.0
  * @author marcan aka Marc-André Lanciault <marcan@smartfactory.ca>
  * @translator	debianus
- * 
+ *
  */
 if (!defined("ICMS_ROOT_PATH")) die("ICMS root path not defined");
 
 // Module Info
 // The name of this module
 
-global $icmsModule;
+global icms::$module;
 define("_MI_IMTAGGING_MD_NAME", "imTagging");
 define("_MI_IMTAGGING_MD_DESC", "Módulo para establecer categorías y etiquetas de contenido web para ImpressCMS");
 

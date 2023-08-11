@@ -6,7 +6,7 @@
  * @license http://www.gnu.org/licenses/old-licenses/gpl-2.0.html GNU General Public License (GPL)
  * @since 1.0
  * @author marcan aka Marc-André Lanciault <marcan@smartfactory.ca>
- * 
+ *
  * @translation        GibaPhp - http://br.impresscms.org
  */
 if (!defined("ICMS_ROOT_PATH")) die("O caminho para o raiz do site não foi definido");
@@ -14,7 +14,7 @@ if (!defined("ICMS_ROOT_PATH")) die("O caminho para o raiz do site não foi defi
 // Module Info
 // The name of this module
 
-global $icmsModule;
+global icms::$module;
 define("_MI_IMTAGGING_MD_NAME", "imTagging");
 define("_MI_IMTAGGING_MD_DESC", "Módulo de Categorização e codificação de Tags/Etiquetas");
 

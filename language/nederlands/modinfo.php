@@ -7,14 +7,14 @@
  * @since 1.0
  * @author marcan aka Marc-André Lanciault <marcan@smartfactory.ca> (english)
  * @author McDonald (translation into dutch)
- * 
+ *
  */
 if (!defined('ICMS_ROOT_PATH')) die('ICMS root path not defined');
 
 // Module Info
 // The name of this module
 
-global $icmsModule;
+global icms::$module;
 define('_MI_IMTAGGING_MD_NAME', 'imTagging');
 define('_MI_IMTAGGING_MD_DESC', 'ImpressCMS categoriseer en tag module');
 
