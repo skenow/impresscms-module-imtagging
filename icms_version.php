@@ -9,7 +9,7 @@
 * @since		1.0
 * @author		marcan aka Marc-André Lanciault <marcan@smartfactory.ca>
 * @package 		imtagging
-* 
+*
 */
 
 if (!defined("ICMS_ROOT_PATH")) die("ICMS root path not defined");
@@ -17,14 +17,14 @@ if (!defined("ICMS_ROOT_PATH")) die("ICMS root path not defined");
 /**  General Information  */
 $modversion = array(
   'name'=> _MI_IMTAGGING_MD_NAME,
-  'version'=> '1.1.1',
+  'version'=> '1.2',
   'description'=> _MI_IMTAGGING_MD_DESC,
-  'author'=> "The SmartFactory",
-  'credits'=> "INBOX International inc.",
-  'help'=> "",
+  'author'=> "David Janssens",
+  'credits'=> "INBOX International inc., The SmartFactory",
+  'help'=> "https://github.com/ImpressModules/imtagging/wiki",
   'license'=> "GNU General Public License (GPL)",
   'official'=> 0,
-  'dirname'=> basename(dirname(__FILE__)),
+  'dirname'=> basename(__DIR__),
 
 /**  Images information  */
   'iconsmall'=> "images/icon_small.png",
@@ -34,20 +34,15 @@ $modversion = array(
 /**  Development information */
   'status_version'=> "RC",
   'status'=> "RC",
-  'date'=> "10 May 2013",
-  'author_word'=> "",
+  'date'=> "11 August 2023",
+  'author_word'=> "Compatibility with ImpressCMS 2.0",
 
 /** Contributors */
-  'developer_website_url' => "http://smartfactory.ca",
-  'developer_website_name' => "The SmartFactory",
-  'developer_email' => "info@smartfactory.ca");
-$modversion['people']['developers'][] = "[url=http://smartfactory.ca/userinfo.php?uid=1]marcan[/url] (Marc-Andr&eacute; Lanciault)";
-$modversion['people']['developers'][] = "[url=http://smartfactory.ca/userinfo.php?uid=112]felix[/url] (F&eacute;lix Tousignant)";
-//$modversion['people']['testers'][] = "";
-//$modversion['people']['translators'][] = "";
-//$modversion['people']['documenters'][] = "";
-//$modversion['people']['other'][] = "";
-//$modversion['warning'] = _CO_SOBJECT_WARNING_BETA;
+  'developer_website_url' => "https://github.com/ImpressModules/imtagging",
+  'developer_website_name' => "Github",
+  'developer_email' => "david.j@impresscms.org");
+$modversion['people']['developers'][] = "[url=https://www.impresscms.org/userinfo.php?uid=1102]fiammybe[/url] (David Janssens)";
+$modversion['warning'] = _CO_SOBJECT_WARNING_RC;
 
 /** Administrative information */
 $modversion['hasAdmin'] = 1;
