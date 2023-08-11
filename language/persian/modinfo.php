@@ -14,7 +14,6 @@ if (!defined("ICMS_ROOT_PATH")) die("ICMS root path not defined");
 // Module Info
 // The name of this module
 
-global icms::$module;
 define("_MI_IMTAGGING_MD_NAME", "برچسب‌ها");
 define("_MI_IMTAGGING_MD_DESC", "ماژولی برای مدیریت شاخه و برچسب‌ها در ایمپرس سی‌ام‌اس.");
 

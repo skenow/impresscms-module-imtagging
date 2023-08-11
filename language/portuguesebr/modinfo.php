@@ -14,7 +14,6 @@ if (!defined("ICMS_ROOT_PATH")) die("O caminho para o raiz do site não foi defi
 // Module Info
 // The name of this module
 
-global icms::$module;
 define("_MI_IMTAGGING_MD_NAME", "imTagging");
 define("_MI_IMTAGGING_MD_DESC", "Módulo de Categorização e codificação de Tags/Etiquetas");
 
