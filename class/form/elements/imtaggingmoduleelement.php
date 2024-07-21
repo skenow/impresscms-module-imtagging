@@ -21,9 +21,9 @@ class ImtaggingModuleElement extends icms_form_elements_Select {
 		$criteria->setSort('name');
 		$modulesObj = $module_handler->getObjects($criteria);
 		foreach ($modulesObj as $moduleObj) {
-			$moduleObj->loadInfo($moduleObj->dirname());
+			$moduleObj->loadInfo($moduleObj->getVar('dirname'));
 			if (isset($moduleObj->modinfo['object_items'])) {
-				$modules_array[$moduleObj->mid()] = $moduleObj->name();
+			    $modules_array[$moduleObj->getVar('mid')] = $moduleObj->getVar('name');
 			}
 		}
 		$this->addOptionArray(array(

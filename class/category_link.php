@@ -177,7 +177,7 @@ class ImtaggingCategory_linkHandler extends icms_ipf_Handler {
 		$moduleObj = icms_getModuleInfo($handler->_moduleName);
 
 		$criteria = new icms_db_criteria_Compo();
-		$criteria->add(new icms_db_criteria_Item('category_link_mid', $moduleObj->mid()));
+		$criteria->add(new icms_db_criteria_Item('category_link_mid', $moduleObj->getVar('mid')));
 		$criteria->add(new icms_db_criteria_Item('category_link_item', $handler->_itemname));
 		$criteria->add(new icms_db_criteria_Item('category_link_cid', $cid));
 		$sql = 'SELECT category_link_iid FROM ' . $this->table;
