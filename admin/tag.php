@@ -27,7 +27,7 @@ function edittag($tag_id = 0) {
 		$sform = $tagObj->getForm(_AM_IMTAGGING_TAG_EDIT, 'addtag');
 		$sform->assign($icmsAdminTpl);
 	} else {
-		$tagObj->setVar('tag_uid', $icmsUser->uid());
+		$tagObj->setVar('tag_uid', icms::$user->getVar('uid'));
 		icms::$module->displayAdminMenu(1, _AM_IMTAGGING_TAGS . " > " . _CO_ICMS_CREATINGNEW);
 		$sform = $tagObj->getForm(_AM_IMTAGGING_TAG_CREATE, 'addtag');
 		$sform->assign($icmsAdminTpl);
