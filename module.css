@@ -44,6 +44,7 @@
 	width: 200px;
 	overflow: auto;
 	height: 75px;
-	float: left;
+	/* float: left; */
 	margin-right: 10px;
+	line-height: 1.5em;
 }
