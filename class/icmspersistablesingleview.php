@@ -65,8 +65,7 @@ class IcmsPersistableSingleView {
 	/**
     * Constructor
     */
-	function IcmsPersistableSingleView(&$object, $userSide=false, $actions=array(), $headerAsRow=true)
-	{
+	function IcmsPersistableSingleView(&$object, $userSide=false, $actions=array(), $headerAsRow=true) {
 		$this->_object = $object;
 		$this->_userSide = $userSide;
 		$this->_actions = $actions;
@@ -77,11 +76,9 @@ class IcmsPersistableSingleView {
 		$this->_rows[] = $rowObj;
 	}
 
-	function render($fetchOnly=false, $debug=false)
-	{
-		include_once ICMS_ROOT_PATH . '/class/template.php';
+	function render($fetchOnly=false, $debug=false) {
 
-		$this->_tpl =& new XoopsTpl();
+		$this->_tpl = new icms_view_Tpl();
 		$vars = $this->_object->vars;
 		$icms_object_array = array();
 
@@ -131,4 +128,3 @@ class IcmsPersistableSingleView {
 		return $this->render(true, $debug);
 	}
 }
-
