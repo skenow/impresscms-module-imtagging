@@ -42,7 +42,7 @@ $modversion = array(
   'developer_website_name' => "Github",
   'developer_email' => "david.j@impresscms.org");
 $modversion['people']['developers'][] = "[url=https://www.impresscms.org/userinfo.php?uid=1102]fiammybe[/url] (David Janssens)";
-$modversion['warning'] = _CO_SOBJECT_WARNING_RC;
+$modversion['warning'] = _CO_ICMS_WARNING_RC;
 
 /** Administrative information */
 $modversion['hasAdmin'] = 1;
